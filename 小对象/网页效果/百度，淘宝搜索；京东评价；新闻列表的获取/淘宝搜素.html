@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#tips{
+				width:200px;float:left;border:1px solid #000000;display:none;}
+			#tips li:hover{background:red;}	
+			#tips li:hover ul{display:block;}
+			#contents{float: left;}
+			.ulss{margin-left:200px;width:200px;height:300px;border:1px solid #000000;display:none;}
+		</style>
+			
+		<script>
+			
+			var ul = document.getElementById('tips');
+			var content = document.getElementById('content');
+			
+//			var word = 'n'
+//			var src='https://suggest.taobao.com/sug?code=utf-8&q='+word+'&_ksTS=1497671378661_280&callback=jsonp281&k=1&area=c2c&bucketid=17'
+			
+			//拿到数据
+			function jsonp281(res){
+				console.log(res);
+	//显示出来			console.log(res.result[1][0]);
+			var ul = document.getElementById('tips');
+			var html ='';
+			for(var i=0;i<res.result.length;i++){
+				var tmp = res.result[i][0];	
+				 html += '<li class="lis">'+tmp+'</li>'
+				
+
+				ul.innerHTML = html;
+				ul.style.display='block';
+				
+			}
+			var lis = document.getElementsByClassName('lis');
+			for(var i=0;i<lis.length;i++){
+				
+				//鼠标移动事件
+				lis[i].onmouseenter=function(event){
+//					console.log(this)
+//					lis[i].appendChild('ul');
+					ul.className = 'ulss';
+					var htmls = '';
+					for(var a=0;a<res.magic.length;a++){
+						var tmps =res.magic[a].data;
+						console.log(tmps);
+						for(var b= 0;b<tmps.length;b++){
+							var tmpss = tmps[b];
+							console.log(tmpss);
+							
+						}
+						lis +='<ul class="ulss">'+
+						'<li>'+tmpss+'</li>'
+						'</ul>';
+						var uls = document.getElementsByClassName('uls')[0];
+						uls.innerHTML = htmls;
+						
+					}
+					
+				}
+			}
+
+			}
+			
+			
+			window.onload=function(){
+				var ipt = document.getElementById('ipt');
+				
+
+				//监听输入框事件
+				ipt.addEventListener('input',function(){	
+                console.log(this.value)
+					
+					var sc = document.createElement('script');
+					sc.src ='https://suggest.taobao.com/sug?code=utf-8&q='+this.value+'&_ksTS=1497671378661_280&callback=jsonp281&k=1&area=c2c&bucketid=17';
+					document.body.appendChild(sc)
+					document.body.removeChild(sc)
+					
+				})
+			
+			
+			
+			
+			
+
+			
+			}
+		</script>
+	</head>
+	<body>
+		<input id="ipt">
+		<div>
+			<ul id="tips">
+				
+			</ul>
+			<div id="contents"></div>
+		</div>
+	</body>
+</html>

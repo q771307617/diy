@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.lis{min-height:50px;font-size:14px;border:1px solid #000000;border-radius:10px;padding: 20px 100px;list-style: none;position:relative;}
+		
+			.left img{position:absolute;top:5px;left:5px;}
+			.left span{height:20px;position:absolute;top:65px;left:5px;}
+		</style>
+		<script>
+			
+			function fetchJSON_comment98vv484(res){
+			console.log(res)
+			var html =''
+			var ul = document.getElementById('ul');
+			
+			
+			
+			
+			
+			for(var i= 0;i<res.comments.length;i++){
+//				var tmp = res.comments[i].content;
+				
+				html+='<li class="lis">'+
+				'<div class="left">'+
+				'<img src='+'http://'+res.comments[i].userImageUrl+'>'+
+				'<span>'+res.comments[i].nickname+'</span>'+
+				'</div>'+
+				res.comments[i].content+
+//	评论里面的图片			'<img src='+'http://'+res.comments[i][images].imgUrl+'>'+
+				
+				'<div class="right">'+
+				'<img src='+'http:'+res.comments[i].images[1].imgUrl+'>'+
+				'</div>'+
+				
+				'<p>'+res.comments[i].creationTime+'&nbsp&nbsp赞'
+						+res.comments[i].usefulVoteCount+'&nbsp&nbsp评论' 						+res.comments[i].replyCount+
+				'</p>'+
+				'</li>';
+				//
+//				if(res.comments[i].images.length>0){
+//					var right = document.getElementsByClassName('right')[0];
+//					console.log(right)
+//				for(var n=0;n<res.comments[i].images.length;n++){
+//						right+= '<img src='+'http:'+res.comments.images[n].imgUrl+'>';
+//
+//					}
+//				}
+				
+				ul.innerHTML=html
+			}
+			}
+			window.onload = function(){
+				var url ='https://sclub.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98vv484&productId=3971173&score=0&sortType=5&page=0&pageSize=10&isShadowSku=0&fold=1';
+				var sc = document.createElement('script');
+				sc.src =url;
+				document.body.appendChild(sc);
+				document.body.removeChild(sc)
+				
+			}
+			
+		</script>
+		
+	</head>
+	<body>
+		<ul id="ul">
+			
+			<li>
+				<div>
+					<img/>
+				</div>
+				<span></span>
+				<div>
+					<img />
+				</div>
+				<p></p>
+			</li>
+			
+		</ul>
+	</body>
+</html>

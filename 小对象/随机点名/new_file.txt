@@ -1,0 +1,7 @@
+Function getStyle(obj, attr){
+	If(obj.currentStyle){
+		return obj.currentStyle[attr];
+	}else{
+		return getComputedStyle(obj,false)[attr];
+	}
+}

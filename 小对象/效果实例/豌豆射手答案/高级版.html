@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.peas,.peas-copy {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 63px;
+				height: 70px;
+			}
+			.bullet {
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background-color: green;
+			}
+		</style>
+	</head>
+	<body>
+
+		<img class="peas" src="imgs/peas.gif">
+
+		<!-- start  17:58 -->
+		<script type="text/javascript">
+			'use strict';
+			window.onload = function(){
+				var peas = document.querySelector('.peas');
+				peas.onmousedown = function(e){
+					e = e || window.event;
+					//阻止图片默认拖拽
+					e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+					//生成新的射手
+					var img = document.createElement('img');
+					img.className = "peas-copy";
+					img.src = "imgs/peas.gif";-
+					document.body.appendChild(img);
+
+					document.onmousemove = function(e){
+						img.style.left = e.clientX - 31 + 'px';
+						img.style.top = e.clientY - 35 + 'px';
+					}
+					document.onmouseup = function(e){
+						e = e || window.event;
+
+						document.onmousemove = null;
+
+						//开启定时器每隔2秒生成一个子弹
+						setInterval(function(){
+							//生成子弹
+							var span = document.createElement('span');
+							span.className = 'bullet';
+							span.style.left = e.clientX + 30 + 'px';
+							span.style.top = e.clientY - 35 + 'px';
+							document.body.appendChild(span);
+
+							//子弹运动
+
+							var l = e.clientX + 30;
+							var timer = setInterval(function(){
+								l += 2;
+								if(l > 1000){
+									clearInterval(timer);
+									l = 1000;
+									span.remove();
+								}
+								span.style.left = l + 'px';
+							},13);
+						},3000);
+					}
+
+					
+				}
+			}
+		</script>
+	</body>
+</html>

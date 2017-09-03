@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			#div1{
+				position:relative;
+				width:1200px;
+				height:100px;
+				margin:0 auto;
+			}
+			p{
+				position:absolute;
+				height:100px;
+				width:100px;
+				text-align:center;
+				line-height:100px;
+				background:#aaa;
+				font-size:20px
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		var odiv=document.getElementById("div1")
+		for(var i=0 ;i<10;i++){
+			var op=document.createElement("p");
+			odiv.appendChild(op);
+			op.style.left=i*100+10*i+"px";
+			op.style.top=0+"px";
+		}
+		var op=odiv.getElementsByTagName("p")
+		var str=["1","2","3","4","5","6","7","8","9","其他"]
+		for(var i=0; i<str.length;i++){
+				op[i].innerHTML=str[i];
+			}
+		    arr="123456789";
+			document.onkeydown=function(e){
+				var evt= e|| event;
+				for(var j=0;j<op.length;j++){
+					op[j].style.background="#aaa";
+				}
+				
+				for(var j=0; j<op.length-1;j++){
+					
+				if(evt.keyCode ==arr.charCodeAt(j)){
+					console.log()
+					op[j].style.background="red";
+				}
+				if(evt.keyCode>=58|| evt.keyCode<=48)	{
+				op[op.length-1].style.background="red";
+			}
+			}
+			
+		}
+		
+	</script>
+</html>

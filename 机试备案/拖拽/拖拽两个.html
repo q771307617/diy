@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap1{
+				position:absolute;
+				width:200px;
+				height:200px;
+				background:red;
+				top:100px;
+				left:0;
+				
+			}
+			#wrap2{
+				position:absolute;
+				width:200px;
+				height:200px;
+				background:black;
+				top:400px;
+				left:0;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap1"></div>
+			
+		<div id="wrap2"></div>
+		<script type="text/javascript">
+			var owrap1 = document.getElementById("wrap1");
+			var owrap2 = document.getElementById("wrap2");
+			
+			
+			owrap1.onmousedown =function(e){
+				var evt = e||event;
+				var x1 = evt.offsetX;
+				var y1 = evt.offsetY;
+				document.onmousemove=function(e){
+					var evt=e || event;
+					var x=evt.clientX;
+					var y=evt.clientY;
+					
+					var _left = x - x1;
+					var _top = y  - y1;
+					var hh=document.documentElement.clientWidth;
+					var tt=document.documentElement.clientHeight;
+					if(_left<0){
+						_left=0;
+					}
+					if(_left>=hh-owrap1.offsetWidth){
+						_left=hh-owrap1.offsetWidth;	
+					}
+					if(_top<=0){
+						_top=0
+						
+					}
+					if(_top>=tt-owrap1.offsetHeight){
+						_top=tt-owrap1.offsetHeight;
+					}
+					owrap1.style.top=_top+"px";
+					owrap1.style.left=_left+"px";
+				}
+				document.onmouseup=function(){
+				  	document.onmousemove=null;
+				}
+			}
+			
+			
+			owrap2.onmousedown =function(e){
+				var evt = e||event;
+				var x1_2 = evt.offsetX;
+				var y1_2 = evt.offsetY;
+				document.onmousemove=function(e){
+					var evt=e || event;
+					var x2=evt.clientX;
+					var y2=evt.clientY;
+					
+					var left = x2 - x1_2;
+					var top = y2  - y1_2;
+					var hh2=document.documentElement.clientWidth;
+					var tt2=document.documentElement.clientHeight;
+					if(left<0){
+						_left=0;
+					}
+					if(left>=hh2-owrap2.offsetWidth){
+						left=hh2-owrap2.offsetWidth;	
+					}
+					if(top<=0){
+						top=0
+						
+					}
+					if(top>=tt2-owrap2.offsetHeight){
+						top=tt2-owrap2.offsetHeight;
+					}
+					owrap2.style.top=top+"px";
+					owrap2.style.left=left+"px";
+				}
+				document.onmouseup=function(){
+				  	document.onmousemove=null;
+				}
+			}
+		</script>
+	</body>
+</html>

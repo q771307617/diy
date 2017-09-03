@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="cookie.js"></script>
+    <script>
+        window.onload = function () {
+
+            var cookie = getCookie('productlist');
+            var array = JSON.parse(cookie);
+            for(var i=0;i<array.length;i++){
+                var productObj =array[i];
+                console.log(productObj)
+
+                var newLi = document.createElement('li');
+                var ul = document.getElementsByClassName('cartlist')[0];
+                ul.appendChild(newLi);
+
+                var img = document.createElement('img');
+                img.src = productObj.image;
+                newLi.appendChild(img);
+
+
+                //http://product.lefeng.com/product/115810416.html
+                var productA = document.createElement('a');
+                productA.href = 'http://product.lefeng.com/product/'+productObj.gid+'.html'
+                productA.target = '_blank';
+                newLi.appendChild(productA);
+
+                var productNameH2 = document.createElement('h2');
+                productNameH2.innerHTML = productObj.productName;
+                productA.appendChild(productNameH2)
+
+                var marketPriceSpan = document.createElement('span');
+                marketPriceSpan.innerHTML = productObj.marketPrice;
+                newLi.appendChild(marketPriceSpan);
+
+
+                var vipshopPriceSpan = document.createElement('span');
+                vipshopPriceSpan.innerHTML = productObj.vipshopPrice;
+                newLi.appendChild(vipshopPriceSpan);
+
+
+
+            }
+        }
+
+    </script>
+</head>
+<body>
+购物车
+
+<ul class="cartlist">
+
+</ul>>
+
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			 #div{
+				height:200px;
+				width:200px;
+				position:absolute;
+			}
+			 
+			 #img{
+				height:100px;
+				width:100px;
+				position:absolute;
+			}
+			#div p{
+				height:30px;
+				width:30px;
+				position:absolute;
+				left:120px;
+				border-radius:50%;
+				background:blue;
+				}
+		</style>
+	</head>
+	<body>
+		<script src="js/move.js"></script>
+		<div id="div">
+			<img  id="img" src="img/peas.gif">
+		</div>
+		
+		<script src="" type="text/javascript"></script>
+		<script type="text/javascript">
+			var oimg=document.getElementById("img");
+			var odiv=document.getElementById("div");
+			var odiv1=document.getElementById("div1");
+			tuo(odiv);
+			function tuo(obj){
+			obj.onmousedown=function(e){
+				var evt=e || event;
+				e.preventDefault ? e.preventDefault() : e.returnValue = false;
+				var left1=evt.offsetX;
+				var top1=evt.offsetY
+				console.log(1);
+				var clone=obj.cloneNode(true);
+				document.body.appendChild(clone);
+				document.onmousemove=function(e){
+					var evt=e || event;
+					var x=evt.clientX;
+					var y=evt.clientY;
+					var left2=x-left1
+					var top2=y-top1
+					clone.style.left=left2+"px";
+					clone.style.top=top2+"px";	
+				}
+			document.onmouseup=function(){
+					document.onmousemove=null;
+					clone.onmousedown=null;
+					}
+					var speedx=200;
+					var timer=setInterval(function(){
+					 var op=document.createElement("p");
+					clone.appendChild(op);
+					var speed=30;
+					var timer=setInterval(function(){
+						speed+=80;
+				   var b=(1000-speed)/8;
+		           var ospeed=speed>0 ? Math.ceil(speed) :Math.floor(speed);
+					var b=ospeed+100;
+						if(b>=1000){
+						clone.removeChild(op);
+						clearInterval(timer);
+				          }else{
+				          	op.style.left=b+"px"	
+				          }
+					},50)
+					},1000)
+				}
+			
+					}	
+		</script>
+	</body>
+</html>

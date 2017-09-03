@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0}
+        .box{
+            width: 100px;height: 100px;position: absolute;
+            background: red;opacity: 1;left: 100px;top: 10px}
+
+    </style>
+    <script src="common.js"></script>
+    <script src="animateBak.js"></script>
+    <script>
+        window.onload =function () {
+            var div = document.getElementsByClassName('box')[0];
+            //var op = 1;
+            var res =  animate(div,{left:500},function () {
+                console.log('参数 函数执行，本次运动结束了')
+
+                animate(div,{left:200,top:400},function () {
+                    animate(div,{left:1000,top:500},function () {
+
+                    })
+                })
+            });
+            console.log(res);
+
+            //获取动画结束丶时间点
+
+//            animate(div,{left:200,top:200})
+
+
+        }
+
+    </script>
+
+</head>
+<body>
+
+<div class="box">
+
+</div>
+
+
+
+</body>
+</html>

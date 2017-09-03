@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var question = ["1、列举几种后端通讯的方法，分别使用的场景",
+							"3、列举5种IE  hastlayout的属性及其值",
+							"4、写出至少20个HTML5标签",
+							"5、简述jpg。Gif。png-8.png-24的区别，分别使用场景",
+							"6、有一个长度为n-1的数组，包含1-n中不重复的乱序的数，求寻找范围内不在数组中的数，考虑空间占用，性能优化，溢出等情况，至少写两个算法",
+							"8、能够设置文本加粗的样式属性是什么",
+							"9、	编写一个方法去掉一个数组的重复元素",
+							"10、编写一个布局，页面宽度自适应，最小宽度300px，左边定宽35%，右边定宽65%",
+							"11、谈谈对html5的了解",
+							"12、Js面向对象的几种方式",
+							"13、在css中哪个属性会影响dom读取文档流的顺序",
+							"14、前端页面有哪三层构成，分别是什么，作用是什么",
+							"15、Css的基本语句构成是？",
+							"16、如何对网站的文件和资源进行优化",
+							"17、Javascipt的本地对象，内地对象和宿主对象",
+							"18、JQuery中有几种类型的选择器",
+							"19、jQuery中的Delegate{}函数有什么作用",
+							"20、用性能最高的一个方式写一个函数去掉数组重复元素，返回一个新数组",
+							"21、行内元素有那些。块级元素有那些。空元素有哪些",
+							"22、说几条javasprit的基本规范",
+							"23、介绍一下标准的css盒子模型，低版本ie盒子的模型有什么不同",
+							"24、说出三种减少页面加载的方法（加载时间指感知的时间或实际加载的时间）",
+							"25、用js代码简单的介绍下自己",
+							"26、Html5中datalist是什么",
+							"27、Ajax同步和异步的区别，如何解决跨域问题",
+							"28、Html5中本地存储概念是什么，有什么优点",
+							"29、什么是ajax和json，它们的优缺点",
+							"30、请使用javascript写出快速排序代码",
+							"31、Html5有那些新增的表单元素",
+							"32、http状态码有那些，分别代表什么意思",
+							"33、什么是闭包（closure）为什么要用它",
+							"34、你知道那些针对jQuery的优化方法",
+							"35、用原型链继承的方式写一个类和子类",
+							"36、编写一个方法求一个字符串的字节长度，假设：一个英文字符占用一个字节，一个中文字符占用两个字节",
+							"37、简单概括浏览器事件模型，如何获得资源dom节点",
+							"38、写一段ajax提交的js代码",
+							"39、判断字符串是否是这样组成的，第一个必须是字母，后面可以是字母和数字、下划线总长度为5-20（请使用正则表达式）",
+							"40、截取字符串abcdefg的efg",
+							"41、在css引入的方式有那些，link和@import的区别是什么",
+							"42、将字符串helloChina反转输出",
+							"43、为什么无法定义1px左右高度的容器",
+							"44、FireFox中标签的居中问题的解决办法",
+							"46、现在想调节一下父元素的透明度，但是又不影响子元素的透明度，怎么破",
+							"47、简述cookies sessionStorage 和localStorage的区别",
+							"48、简述ECMASCRIPT6的新特性",
+							"49、Apply和call方法的异同",
+							"50、在javascript中什么是伪数组，如何将伪数组转化为标准数组",
+							"51、Js和nitive交互的方法与问题",
+							"52、用sass的minix定义一些代码片段，且可传参数",
+							"54、H5中新增的一些单位rem是什么意思，和em的关系，以及rem在自适应布局中的应用方法",
+							"55、如何实现浏览器内多个标签页之间的通信？",
+							"56、假设现在页面里有一个id是con的div，现在需要编写js代码，在页面加载完成后 将div的高度设置成100px，宽度设置成60px，并设置成灰色的ipx的边框，北京设置成浅黄色。",
+							"57、对新技术有那些了解，常去的网站有那些",
+							"58、列举几种后端通讯的方法，分别使用的场景",
+							"59、用程序找出数组中出现次数超过一半的数字",
+							"60、请设计一套方案，用于确保页面中js加载完全，对于优化某网页的加载速度，有什么独到见解",
+							"61、请事先鼠标点击中的任意标签，alert该标签的名称（注意兼容性）",
+							"62、对string对象进行扩展，使其具有删除前后空格的方法",
+							"63、常使用的库有哪些？常用的前端开发工具？开发过什么应用或组件？",
+							"64、用一句话概述您的有点，用一句话概述您的缺点",
+							"65、描述下你对js闭包。面向对象、继承的理解",
+							"66、你做的页面在哪些浏览器测试过？这些浏览器的内核分别是什么？",
+							"67、写出几种IE6 bug的解决方法",
+							"68、清楚浮动的几种放回，各自的优缺点",
+							"Javascript的typeof返回哪些数据类型；列举3种强制类型转换和2中隐式类型转换",
+							"69、写出3个使用this的典型应用",
+							"70、JQuery delegate函数的作用？请举例说明",
+							"71、Eval函数的作用",
+							"72、标签上title与alt属性的区别是什么",
+							"73、对WEB标准以及w3c的理解与认识？",
+							"74、Css选择符有哪些？哪些属性可以继承？优先级算法如何计算？",
+							"75、请戳出ie6/7下特有的cssbug",
+							"76、如何将一个元素600毫秒的速度缓慢向上滑动显示？",
+							"77、写一个获取非行间样式的函数",
+							"78、请用正则表达式验证数字",
+							"79、为什么利用多个域名来提供网站资源会更有效？",
+							"80、你如何从浏览器的URL中获取参数信息",
+							"81、手机端文字大小用什么单位",
+							"82、是否做过有上百图层的psd切图？ps隐藏其他图层，只显示其中一个图层的快捷键",
+							"83、浏览器标准模式和怀疑模式之间的区别是什么？",
+							"84、Javascript的同源策略",
+							"85、你所做的WEB移动端项目中，有遇到哪些兼容?",
+							"86、有了解响应式布局吗？请大体说一说",
+							"87、身为以为web前端工程师，你肯定知道现在最流行的前端技",
+							"88、请简述为什么要使用数据库的事务"];
+			var mytime=null;
+			
+			console.log(question.length);
+			
+			function doit(){
+				if(mytime==null){
+					this.innerHTML="停止";
+					show();                    
+				}else{
+					this.innerHTML="开始";
+					clearTimeout(mytime);
+					mytime=null;                    
+				}
+			}
+			
+			function show(){
+				var box=document.getElementById("box");
+				var num=Math.floor((Math.random()*100000))%question.length;
+				box.innerHTML=question[num];
+				mytime=setTimeout("show()",1);
+			} 
+
+		</script>
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180% "Microsoft YaHei","微软雅黑", "宋体";}
+
+#box{margin:auto;width:860px;font-size:30px;height:100px;line-height:30px;overflow:hidden;color:#138eee;text-align:center;padding:20px 40px 50px 0;border-radius: 10px;background-color: #ccc;}
+#bt{margin:auto;width:100px;text-align:center;font-size:20px;cursor:pointer;background-color:#138eee;border-radius: 10px;color: #fff;line-height: 40px;margin-top: -50px;}
+</style>
+
+	</head>
+	<body>
+		<div id="question1">
+			<div id="box">亲，准备好回答问题了吗？</div>
+			<div id="bt" onClick="doit()">开始</div>
+		</div>
+	</body>
+</html>

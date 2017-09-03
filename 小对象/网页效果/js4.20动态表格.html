@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		table{margin:100px auto;border-spacing: 0;}
+			table td{width:100px;border:1px solid #000;height:30px;text-align: center;}
+			table th{width:100px;border:1px solid #000;height:30px;}
+			table td:nth-of-type(5){cursor:pointer;border:0;color:red;width:48px;height:10px;}
+
+		
+			
+		</style>	
+	</head>	
+	<body>	
+		
+	姓名<input type="text"><br/>
+    性别<input type="text"><br/>
+	学号<input type="text"><br/>
+	分数<input type="text">	
+	<input type="button" value="添加行"  id="btn">
+     <script type="text/javascript">
+//做法一	
+  	var table=document.createElement("table");
+			document.body.appendChild(table);
+
+	var thead=document.createElement("thead");
+		table.appendChild(thead);
+		
+	var tr=document.createElement("tr");
+		thead.appendChild(tr);
+		
+	var th1=document.createElement("th");
+		tr.appendChild(th1);
+	var tit1=document.createElement("span");
+		th1.appendChild(tit1);
+	var text=document.createTextNode("姓名")
+		tit1.appendChild(text);
+	
+	
+	var th2=document.createElement("th");
+		tr.appendChild(th2);
+	var tit2=document.createElement("span");
+		th2.appendChild(tit2);
+	var text=document.createTextNode("性别")
+		tit2.appendChild(text);
+		
+		
+	var th3=document.createElement("th");
+		tr.appendChild(th3);
+	var tit3=document.createElement("span");
+		th3.appendChild(tit3);
+	var text=document.createTextNode("学号")
+		tit3.appendChild(text);
+		
+		
+	var th4=document.createElement("th");
+		tr.appendChild(th4);
+	var tit4=document.createElement("span");
+		th4.appendChild(tit4);
+	var text=document.createTextNode("分数")
+		tit4.appendChild(text);
+				
+			
+	var tbody=document.createElement("tbody");
+		table.appendChild(tbody);
+		btn.onclick=function(){
+	var tr=document.createElement("tr");
+		tbody.appendChild(tr);
+	var td1=document.createElement("td");
+		tr.appendChild(td1);
+	var tit1=document.createElement("span");
+		td1.appendChild(tit1);
+	var text=document.createTextNode(document.getElementsByTagName("input")[0].value)
+		tit1.appendChild(text);
+		
+		
+	var td2=document.createElement("td");
+		tr.appendChild(td2);
+	var tit2=document.createElement("span");
+		td2.appendChild(tit2);
+	var text=document.createTextNode(document.getElementsByTagName("input")[1].value)
+		tit2.appendChild(text);
+		
+		
+	var td3=document.createElement("td");					
+		tr.appendChild(td3);
+	var tit3=document.createElement("span");
+		td3.appendChild(tit3);
+	var text=document.createTextNode(document.getElementsByTagName("input")[2].value)
+		tit3.appendChild(text);
+				
+	var td4=document.createElement("td");					
+		tr.appendChild(td4);
+	var tit4=document.createElement("span");
+		td4.appendChild(tit4);
+	var text=document.createTextNode(document.getElementsByTagName("input")[3].value)
+		tit4.appendChild(text);
+		
+		
+	var td5=document.createElement("td");					
+		tr.appendChild(td5);
+	var tit5=document.createElement("span");
+		td5.appendChild(tit5);		
+	var button=document.createTextNode("删除");
+		tit5.appendChild(button);	
+		td5.onclick=function(){
+		tbody.removeChild(tr);							
+			}				
+			}
+//做法2			
+
+</script>
+
+
+
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</body>
+</html>

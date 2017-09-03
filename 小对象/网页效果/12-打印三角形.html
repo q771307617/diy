@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        /*
+
+        *****
+        *****
+        *****
+        *****
+        *****
+
+
+         *
+         **
+         ***
+         ****
+         *****
+
+         */
+
+        //打印正方形
+        for(var i=1;i<=25;i++){
+            document.write('*');
+            if(i%5==0){
+                document.write('<br/>');
+            }
+        }
+
+        //外层循环控制 行数，内层循环 控制星星的个数（列数）
+
+        //打印三角形
+        for(var i=1;i<=5;i++){
+            console.log('第'+i+'行,需要'+i+'个*')
+            //document.write(i+'adfasdfadfa')
+            //打印i个星星
+            for(var j=0;j<i;j++){
+                document.write('*')
+            }
+
+            document.write('<br/>');
+        }
+
+
+//打印几个星星
+//        for(var i=0;i<5;i++){
+//            document.write('*')
+//        }
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

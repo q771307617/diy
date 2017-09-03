@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        //添加 cookie
+        document.cookie = 'userid=123123';
+
+        var username = '张三';
+        username = encodeURIComponent(username);
+
+        document.cookie = 'username='+username;
+
+        //如果uid 一样 就是修改
+        document.cookie = 'userid=555555';
+
+
+        //删除cookie
+        //设置一个过期时间为过去的一个时间点
+
+        var date = new Date();
+        date.setDate(date.getDate()-7);
+        document.cookie = 'userid=;expires='+date;
+
+
+
+        var date = new Date();
+        date.setDate(date.getDate()+365*68);
+        document.cookie = 'password=123456;expires='+date;
+
+        var date = new Date();
+        date.setDate(date.getDate()+365*68);
+        document.cookie = 'goodsname=1adsfasd;expires='+date+';path=/';
+
+
+        //获取cookie
+        console.log(decodeURIComponent(document.cookie))
+
+
+
+
+
+
+
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

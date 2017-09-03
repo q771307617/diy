@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        document.cookie = 'uid = 233uid = 233'
+
+        var username = '张三';
+        username = encodeURIComponent(username);
+
+        document.cookie = 'username='+username;
+
+        document.cookie = 'uid = 332'
+
+
+
+        var date = new Date();
+        date .setDate(date.getDate()-7)
+        document.cookie = 'uid = 233;expires = '+date;
+
+        document.cookie = 'YU = 120;domain = baidu.com'
+
+        console.log(decodeURIComponent(document.cookie))
+    </script>
+</head>
+<body>
+
+</body>
+</html>

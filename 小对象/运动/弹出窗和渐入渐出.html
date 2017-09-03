@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;}
+    </style>
+</head>
+<!--渐入渐出-->
+<script>
+    window.onload = function(){
+        var div= document.getElementsByTagName('div')[0];
+        var timer = setInterval(function(){
+            var tmp = 0.05
+                div.style.opacity-=tmp;
+            if(div.style.opacity<=0){
+                clearInterval(timer)
+            }
+        },100)
+
+
+//    <!--弹出窗-->
+        var div1= document.getElementsByClassName('div1')[0];
+        var p= document.getElementsByClassName('p')[0];
+        var b= document.getElementsByClassName('b')[0];
+        console.log(div1)
+
+        div1.onmouseenter = function() {
+//            clearInterval(timer)
+            var timer = setInterval(function(){
+                var tmp = 20;
+                div1.style.left =div1.offsetLeft+ tmp+'px';
+                if(div1.offsetLeft>=0){
+                    clearInterval(timer);
+                    div1.style.left = 0;
+                }
+            },30);
+
+        div1.onmouseleave = function(){
+//            clearInterval(timer)
+                var timer = setInterval(function(){
+                        var tmp1 =-20;
+                    div1.style.left =div1.offsetLeft+ tmp1+'px';
+                    if(div1.offsetLeft<=-380){
+                        clearInterval(timer);
+                        div1.style.left = -380+'px';
+                    }
+                },30)
+        }
+        }
+    }
+</script>
+
+
+<body>
+<div style="height:100px;width: 100px;background:red;opacity:1"></div>
+<div class="div1" style="height:100px;width: 400px;position: absolute;top:300px;left:-380px;display: flex;" >
+<p  class="p" style="height:100px;background:greenyellow;flex:9;"></p>
+<b class="span" style="background:dodgerblue;flex:1;"></b>
+</div>
+</body>
+</html>

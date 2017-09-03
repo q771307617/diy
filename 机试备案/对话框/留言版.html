@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width:600px;
+				height:240px;
+				margin:0 auto;
+			}
+			#txt{
+				width:500px;
+				height:200px;
+			}
+			#div2{
+				width:700px;
+				margin:0 auto;
+			}
+			#div2 div{
+				width:700px
+				height:100px;
+				border:1px solid #aaa;
+				margin-bottom:20px;
+			}
+		</style>
+	</head>
+	<body>
+		<script src="js/com.js"></script>
+		<div id="div1">
+			<textarea id="txt"></textarea>
+			<input type="button" value="发送" id="btn">
+		</div>
+		<div id="div2"></div>
+		<script type="text/javascript">
+			var odiv1=document.getElementById("div1");
+			var otxt=document.getElementById("txt");
+			var odiv2=document.getElementById("div2");
+			var obtn=document.getElementById("btn");
+			obtn.onclick=function(){
+			var str=otxt.value;
+			var odiv3=document.createElement("div");
+			var op1=document.createElement("p");
+			var op2=document.createElement("p");
+			var op3=document.createElement("p");
+			var ospan=document.createElement("span");
+		      op1.innerHTML=str;
+			  odiv3.appendChild(op1);
+			  var oDate=new Date();
+			  var arr=getDate(oDate,"|");
+			  op2.innerHTML=arr;
+			  odiv3.appendChild(op2);
+			  op3.innerHTML="<span>删除</span>"
+		      odiv3.appendChild(op3);
+			 if(odiv2.innerHTML==""){
+			  odiv2.appendChild(odiv3);	
+			 }else{
+			  var of=odiv2.firstChild ||odiv2.firstElementChild;
+			  var oChild=odiv2.childNodes[0];
+			  console.log(odiv3);
+		      odiv2.insertBefore(odiv3,of);
+			 }
+            otxt.value=" ";
+		     odiv3.onclick=function(e){
+		     	var evt=e || event;
+		     	var tag=evt.target ||evt.srcElement;
+		     	if(tag.nodeName.toUpperCase()=="SPAN"){
+		     		odiv3.remove();
+		     	}
+		     }
+			}
+//			function foo(item){
+//					odiv2.removeChild(item.parentNode.parentNode);
+//			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0}
+        .box{
+            width: 100px;height: 100px;position: absolute;
+            background: red;opacity: 1;left: 0px}
+
+    </style>
+    <script src="common.js"></script>
+    <script src="animate.js"></script>
+    <script>
+        window.onload =function () {
+            var div = document.getElementsByClassName('box')[0];
+            //var op = 1;
+
+            animate(div,1000);
+
+
+        }
+
+    </script>
+
+</head>
+<body>
+
+<div class="box">
+
+</div>
+
+
+
+</body>
+</html>

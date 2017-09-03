@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="cookie.js"></script>
+    <script>
+        window.onload = function () {
+            //设置cookie
+            var a = document.getElementsByTagName('a')[0];
+
+            a.onclick = function () {
+                console.log(a);
+
+
+                //[{prdocutname:'asd',href:sdss;adfasd,asd,fa,sdf,asd,f}.{prdocutname:'asd',href:sdss;adfasd,asd,fa,sdf,asd,f}]
+
+                setCookie('product',a.innerHTML,30);
+                setCookie('productLink',a.href,30);
+
+            }
+        }
+
+    </script>
+</head>
+<body>
+
+<a href="http://www.baidu.com">iphone7</a>
+
+
+<div></div>
+
+
+
+</body>
+</html>

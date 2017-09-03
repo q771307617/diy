@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    ul{display: none;position: absolute}
+    </style>
+    <script>
+        window.onload=function(){
+            var ul =document.getElementsByTagName('ul')[0];
+            document.oncontextmenu=function(event){
+                var evt =window.event||event;
+                ul.style.display='block';
+                ul.style.top = evt.pageY+'px';;
+                ul.style.left = evt.pageX +'px'
+
+
+                return false;
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+<ul>
+    <li>功能1</li>
+    <li>功能2</li>
+    <li>功能3</li>
+</ul>
+</body>
+</html>

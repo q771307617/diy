@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			form{height:500px;width:500px;border: 2px solid green;margin:10px auto;}
+			span{display: inline-block;margin: 30px;}
+			.btn{height:30px;width:60px;background: red;margin:0 auto;display: block;border: 0;}
+		</style>
+	</head>
+	<body>
+		<form>
+			<label for="pt1"><span>登陆账号</span></label><input id="pt1" placeholder="请输入用户名"/><a></a><br/>
+			<span>你的昵称</span><input id="pt1" placeholder="请输入昵称"/><a></a><br/>
+			<span>电子邮箱</span><input id="pt1" placeholder="请输入邮箱" /><a></a><br/>
+			
+			<input class="btn" type="button" value="注册"/>
+		</form>
+		
+		<script type="text/javascript">
+			onload=function(){
+				var btn=document.getElementsByTagName("input")[3];
+				var ipt=document.getElementsByTagName("input")[0];
+				var ipt1=document.getElementsByTagName("input")[1];
+				var ipt2=document.getElementsByTagName("input")[2];
+				var a=document.getElementsByTagName("a")[0];
+				var a1=document.getElementsByTagName("a")[1];
+				var a2=document.getElementsByTagName("a")[2];
+				var z=/[a-zA-Z0-9]{3,16}/;
+				var t=/^[0-9a-zA-Z\u4e00-\u9fa5_]{3,16}$/;
+				var s=/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+				ipt.onfocus=function(){
+					
+					a.innerHTML="请输入用户名";
+					a.style.color="green";
+				}
+				ipt.onblur=function(){
+					
+					if(z.test(ipt.value)==true){
+						a.innerHTML="";
+					}else if(ipt.value!=""){
+						
+						a.innerHTML="账号格式错误";
+						a.style.color="red";
+					}else{
+						a.innerHTML="";
+					}
+				}
+				
+				ipt1.onfocus=function(){
+					a1.innerHTML="请输入昵称";
+					a1.style.color="green";
+				}
+				ipt1.onblur=function(){
+					
+					if(t.test(ipt1.value)==true){
+						a1.innerHTML="";
+					}else if(ipt1.value!=""){
+						a1.innerHTML="昵称格式错误";
+						a1.style.color="red";
+					}else{
+					 a1.innerHTML="";
+					}
+				}
+				ipt2.onfocus=function(){
+					a2.innerHTML="请输入邮箱";
+					a2.style.color="green";
+				}
+				ipt2.onblur=function(){
+					
+					if(s.test(ipt2.value)==true){
+						a2.innerHTML="";
+					}else if(ipt2.value!=""){
+						a2.innerHTML="邮箱格式错误";
+						a2.style.color="red";
+					}else{
+						a2.innerHTML="";
+					}
+					
+				}
+				btn.onclick=function(){
+					if(z.test(ipt.value)==true&&t.test(ipt1.value)==true&&s.test(ipt2.value)==true){
+						alert("提交成功");
+					}else{
+						alert("请核对填写信息");
+					}
+				}
+				
+				
+				
+			}
+		</script>
+	</body>
+</html>

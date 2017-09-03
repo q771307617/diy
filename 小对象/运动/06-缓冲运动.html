@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0}
+        .box{
+            width: 100px;height: 100px;position: absolute;
+            background: red;opacity: 1;left: 1000px}
+
+    </style>
+    <script src="common.js"></script>
+    <script>
+        window.onload =function () {
+            var div = document.getElementsByClassName('box')[0];
+            //var op = 1;
+            var target = 0;
+            div.timer =  setInterval(function () {
+                //
+                //
+                var speed = Math.floor((target - div.offsetLeft)/8);
+                div.style.left = div.offsetLeft + speed +'px';
+                console.log(div.offsetLeft,speed )
+                if(div.offsetLeft <= target){
+                    clearInterval(div.timer);
+                }
+            },30);
+
+
+
+        }
+
+    </script>
+
+</head>
+<body>
+
+<div class="box">
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+				#bg{
+					background: url(img/bg.jpg)  no-repeat;
+					background-size: cover;
+					width: 100%;
+					height: 100%;
+					position: fixed;
+				}
+				img {
+					width: 18px;
+					height: 18px;
+					position: absolute;
+					
+				}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div id="bg">
+
+		</div>
+
+		<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+
+		<script type="text/javascript">
+			function Particle(){//萤火虫构造器
+
+				//创建一个img
+				this.element = document.createElement('img');
+				this.element.src = 'img/1.jpg'
+
+				this.show = function(){//显示
+					this.element.style.top = this.pointY+"px";
+					this.element.style.left = this.pointX+"px";
+					document.getElementById('bg').appendChild(this.element)
+					return this;//this 值萤火虫对象本身
+				},
+				this.newPoint = function(){ //随机位置  window.innerWidth 窗口宽高
+					this.pointX = this.randomInt(window.innerWidth-100);
+					this.pointY = this.randomInt(window.innerHeight-100);
+					return this;//为了继续使用后面的方法
+				},
+				this.speed=function(){ //控制速度
+					//0-9  5000-14000
+					this.speedRun = (this.randomInt(10)+5)*1000
+					return this;
+				},
+				this.fly = function(){
+					var self = this;
+					console.log(this.speedRun)
+//
+					//animate()是运动方法 三个参数， 第一个参数是 运动的最终样式，第二个参数是运动的速度，第三个参数是运动结束的回调函数
+					//飞到随机的位置上，运动结束后继续随机一个新位置再飞过去
+					$(this.element).animate({"top":this.pointY,"left":this.pointX},this.speedRun,function(){
+						self.speed().newPoint().fly();
+					})
+				}
+
+				this.randomInt = function (max){
+					//0 <=randomInt <max
+					return Math.floor(Math.random()*max);
+				}
+
+			}
+
+			
+
+			
+			
+			window.onload = function () {
+				var tootle = 40;
+
+				var particle = [];
+
+				for(var i=0;i<tootle;i++){
+
+					particle[i] = new Particle();
+
+					particle[i].newPoint().show().speed().newPoint().fly();
+
+				}
+			}
+		</script>
+
+	</body>
+
+</html>

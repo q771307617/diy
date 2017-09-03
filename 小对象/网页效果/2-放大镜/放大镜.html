@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        *{margin: 0;padding: 0}
+        html,body{height: 100%;width: 100%}
+        .box{
+            width: 350px;
+            height: 350px;
+            position: relative;
+            left: 100px;
+            top: 100px;;
+        }
+        .small{
+            width: 350px;
+            height: 350px;
+            position: relative;
+        }
+        .mask{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(255,255,0,0.3);
+            display: none;
+        }
+
+        .big{
+            position: absolute;
+            left: 360px;
+            top:0;
+            width: 350px;
+            height: 350px;
+            overflow: hidden;
+            display: none;
+        }
+        .big img{
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+
+
+    </style>
+    <script src="js/common.js"></script>
+    <script>
+
+
+        window.onload = function () {
+            var box = document.getElementsByClassName('box')[0];
+            var small = document.getElementsByClassName('small')[0];
+            var mask = document.getElementsByClassName('mask')[0];
+            var big = document.getElementsByClassName('big')[0];
+            var bigImg = big.getElementsByTagName('img')[0];
+            //先调整 大图的宽度
+            //遮罩的宽度/small的宽度 = big的宽度/bigImg的宽度
+            //bigImg的宽度  = big的宽度/遮罩的宽度*small的宽度
+            console.log(mask.offsetWidth)//可见区域的宽度
+            console.log(getStyle(mask).width)
+            var bigImgWidth = parseInt(getStyle(big).width)/parseInt(getStyle(mask).width)*small.offsetWidth;
+            bigImg.style.width = bigImgWidth +'px';
+
+            //鼠标进入 small 时候  mask显示
+            small.onmouseenter = function () {
+                mask.style.display = 'block';
+                big.style.display = 'block'
+            }
+            small.onmouseleave = function () {
+                mask.style.display = 'none'
+                big.style.display = 'none'
+
+            }
+
+
+            small.onmousemove = function (event) {
+                var evt = event || window.event;
+//mask要跟着  鼠标
+                var maskX = evt.pageX-box.offsetLeft-mask.offsetWidth/2;
+                var maskY =  evt.pageY - box.offsetTop- mask.offsetHeight/2;
+                //边界
+                if(maskX<0){
+                    maskX = 0;
+                }else if(maskX > box.offsetWidth - mask.offsetWidth){
+                    maskX = box.offsetWidth - mask.offsetWidth;
+                }
+                if(maskY <0){
+                    maskY = 0;
+                }else if(maskY >box.offsetHeight - mask.offsetHeight){
+                    maskY = box.offsetHeight - mask.offsetHeight;
+                }
+                mask.style.left =    maskX +'px';
+                mask.style.top = maskY+'px'
+                console.log(evt.target || evt.srcElement)
+                console.log(small.offsetLeft)
+
+                //mask 移动 ，大图要往相反的方向 移动，并且，移动的距离还要成比例
+
+               // 大图的坐标 /小图的移动距离 = 大图的宽度/小图的宽度
+                // 大图的坐标  = 大图的宽度/小图的宽度*小图的移动距离
+                var bimImgX = bigImgWidth/small.offsetWidth*maskX;
+                var bimImgY = bigImgWidth/small.offsetWidth*maskY;
+
+                bigImg.style.left = -bimImgX +"px";
+                bigImg.style.top =- bimImgY +'px';
+
+
+
+            }
+
+
+
+
+
+        }
+    </script>
+
+</head>
+<body>
+
+
+    <div class="box">
+      <div class="small">
+          <img src="images/31.jpg">
+          <div class="mask"></div>
+      </div>
+
+
+        <div class="big">
+            <img src="images/32.jpg">
+        </div>
+
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.peas{width:70px;
+			height:72px;position:relative;top:0;left:0}
+			/*.bullet{position:absolute;left:20px;top:20px;
+			border-radius:50%;background-color:red;}*/
+			
+			
+			.bullet {
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background-color: green;
+			}
+		</style>
+		
+	</head>
+	<body>
+			<img   class="peas" src="img/peas.gif" />
+			<script type="text/javascript">
+				'use strict';
+				window.onload = function(){
+					
+					var peas = document.querySelector('.peas');
+					peas.onmousedown = function(e){
+						console.log("aaa");
+						var evt = e||event;
+						evt.preventDefault? evt.preventDefault() :evt.returnValue = false;
+					    document.onmousemove = function(e){
+					    	var evt = e||event;
+					    	peas.style.left = evt.clientX - 35 +"px";
+					    	peas.style.top = evt.clientY  -35+"px";
+					    	
+					    }
+					    document.onmouseup =function(e){
+					    	var evt = e||event;
+					    	document.onmousemove =null;
+					    	peas.onmousedown = null;
+					    	
+					    	
+					    	
+					    	setInterval(function(){
+							//生成子弹
+							var span = document.createElement('span');
+							span.className = 'bullet';
+							span.style.left = e.clientX + 30 + 'px';
+							span.style.top = e.clientY - 35 + 'px';
+							document.body.appendChild(span);
+
+							//子弹运动
+							var l = e.clientX + 30;
+							var timer = setInterval(function(){
+								l += 2;
+								if(l > 1000){
+									clearInterval(timer);
+									l = 1000;
+									span.remove();
+								}
+								span.style.left = l + 'px';
+							},13);
+						},2000);
+					    }
+					    
+					    
+					    
+					}
+				}
+				
+			</script>
+	</body>
+</html>

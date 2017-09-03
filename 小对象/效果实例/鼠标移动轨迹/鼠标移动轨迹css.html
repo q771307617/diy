@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,div{margin:0;padding:0;}
+        div{position:absolute;width:66px;height:45px;background:url(img/1.gif) no-repeat;top:100px;left:50px;}
+        p,input{margin:10px;}
+    </style>
+    <script>
+
+        window.onload=function () {
+            var pointArray = [];//空数组 放位置信息
+            var oDiv = document.getElementsByTagName('div')[0];
+
+            document.onmousedown = function (evt) {
+                var e1 = evt || window.event;
+                //需要记录的第一个点
+                e1.clientX//44
+                e1.clientY//55
+                //[44,55,23,55]
+                var point = new Object();
+                point.x= e1.clientX;
+                point.y = e1.clientY;
+                pointArray.push(point);
+
+                document.onmousemove = function (event) {
+                    var e2 = event || window.event;
+                   // console.log(e2.clientX,e2.clientY)
+                    //移动过程中 经过的点
+                    var p = new Object();
+                    p.x = e2.clientX;
+                    p.y = e2.clientY;
+                    pointArray.push(p);
+
+                }
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    console.log(pointArray)
+
+                    oDiv.style.background = 'url(img/2.gif) no-repeat';
+
+                    //没隔一段时间 让div 的坐标改变一次
+                   var timer =  setInterval(function () {
+
+                        if(pointArray.length == 0){
+                            //数组没有点
+                            clearInterval(timer)
+                            oDiv.style.background = 'url(img/1.gif) no-repeat';
+                            return;
+                        }
+
+                        var point = pointArray[0];
+                        oDiv.style.top = point.y +'px';
+                        oDiv.style.left = point.x +'px';
+
+                        pointArray.shift();
+
+                    },50)
+
+
+
+
+                }
+
+            }
+        }
+
+    </script>
+</head>
+<body>
+<div></div>
+
+</body>
+</html>

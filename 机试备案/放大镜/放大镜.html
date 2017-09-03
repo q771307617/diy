@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			body,ul,li,dl,dt,dd,p,ol,h1,h2,h3,h4,h5,h6,form,table,img,fieldset,legend{margin:0;padding:0;}
+			ul,ol,li{list-style:none;}
+			img,fieldset{border:0;}
+			img{display:block;}
+			a{text-decoration:none;color:#333;}
+			h1,h2,h3,h4,h5,h6{font-weight:100;}
+			body{font-size:12px;font-family:"微软雅黑";}
+			input,a{outline:none;}
+			
+			.div{height:370px;width:500px;position: relative;}
+			.div1{height:300px;width:300px;position: absolute;left:0;top:0}
+			.div1 img{height:300px;width:300px;}
+			.div2{height:60px;width:350px;position: absolute;bottom: 0;left:0}
+			.div2 li{float:left;border:2px solid black;}
+			.div4{height:300px;width:300px;position: relative;}
+			.box{height:100px;width:100px;border: 1px solid green;position: absolute;}
+			.div3{height:300px;width:300px;position: absolute;left:310px;top:0;overflow: hidden;}
+			.div3 img{position: absolute;}
+		</style>
+	</head>
+	<body>
+		<div class="div">
+			
+			<div class="div4">
+				<div class="div1"><img src="img/1_m.jpg"/></div>
+				<div class="box"></div>
+			</div>
+    	<ul class="div2">
+			<li style="border-right: none;"><img src="img/1_s.jpg"></li>
+			<li style="border-right: none;"><img src="img/2_s.jpg"></li>
+			<li style="border-right: none;"><img src="img/3_s.jpg"></li>
+			<li style="border-right: none;"><img src="img/4_s.jpg"></li>
+			<li><img src="img/5_s.jpg"></li>
+		</ul>
+				
+			
+			<div class="div3"><img src="img/1_b.jpg"></div>
+		</div>
+		
+		<script type="text/javascript">
+			onload=function(){
+				var div1=document.getElementsByClassName("div1")[0];
+				var div2=document.getElementsByClassName("div2")[0];
+				var img=div1.getElementsByTagName("img")[0];
+				var lis=div2.getElementsByTagName("li");
+				var box=document.getElementsByClassName("box")[0];
+				
+				var div3=document.getElementsByClassName("div3")[0];
+				var imga=div3.children[0];
+				for(let i=0;i<lis.length;i++){
+					lis[i].onmouseenter=function(){
+						img.src="img/"+(i+1)+"_m.jpg";
+						imga.src="img/"+(i+1)+"_b.jpg"
+					}
+				}
+				
+				
+				
+				
+				var div4=document.getElementsByClassName("div4")[0];
+				imga.style.height=div1.offsetHeight/box.offsetHeight*div3.offsetHeight+"px";
+				
+				div4.onmouseenter=function(){
+					box.style.display="block";
+					div3.style.display="block";
+				}
+				div4.onmouseleave=function(){
+					box.style.display="none";
+					div3.style.display="none";
+				}
+                
+                div4.onmousemove=function(evt){
+                	var e=evt||window.event;
+                   var x=e.pageX-div1.offsetLeft-box.offsetWidth/2;
+                   var y=e.pageY-div1.offsetTop-box.offsetHeight/2;
+                   if(x<0){
+                   	  x=0;
+                   }else if(x>div1.offsetWidth-box.offsetWidth){
+                   	x=div1.offsetWidth-box.offsetWidth;
+                   }
+                   if(y<0){
+                   	y=0;
+                   }else if(y>div1.offsetHeight-box.offsetHeight){
+                   	   y=div1.offsetHeight-box.offsetHeight;
+                   }
+                   box.style.left=x+"px";
+                   box.style.top=y+"px";
+                   imga.style.left=-x/div1.offsetWidth*imga.offsetWidth+"px";
+                   imga.style.top=-y/div1.offsetHeight*imga.offsetHeight+"px";
+                   
+                }
+			
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0}
+        .box{width: 200px;height: 200px;position: absolute;background: red}
+
+    </style>
+    <script>
+        window.onload =function () {
+            var div = document.getElementsByClassName('box')[0];
+            var div1 = document.getElementsByClassName('box')[1];
+
+            var speed = 1;
+
+            var isRunning = true;
+            div.timer =  setInterval(function () {
+                //speed = speed +2;
+                div.style.left  = div.offsetLeft + speed+'px';
+            },50);
+
+
+            console.log(div1)
+            div1.timer =  setInterval(function () {
+                //speed = speed +2;
+                console.log(22)
+                div1.style.height  = div1.offsetHeight + speed+'px';
+            },50);
+
+
+            document.onclick = function () {
+
+                if(isRunning){
+                    clearInterval(div.timer);
+                    isRunning = false;
+                }else{
+                    div.timer =  setInterval(function () {
+                        //speed = speed +2;
+                        div.style.left  = div.offsetLeft + speed+'px';
+                    },50);
+                    isRunning = true;
+                }
+
+
+
+
+            }
+
+        }
+
+    </script>
+
+</head>
+<body>
+
+<div class="box">
+
+</div>
+
+<div class="box">
+
+</div>
+
+</body>
+</html>

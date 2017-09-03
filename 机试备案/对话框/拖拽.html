@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				height:100px;
+				width:100px;
+				position:absolute;
+				background:red;
+			}
+			#div2{
+				height:100px;
+				width:100px;
+				position:absolute;
+				background:blue;
+				left:130px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<div id="div2"></div>
+		<script type="text/javascript">
+		var odiv=document.getElementById("div1");
+		var odiv1=document.getElementById("div2");
+		tuo(odiv1);
+		tuo(odiv);
+		function tuo(obj){
+			obj.onmousedown=function(e){
+				var evt=e || event;
+				var left1=evt.offsetX;
+				var top1=evt.offsetY
+				document.onmousemove=function(e){
+					var evt=e || event;
+					var x=evt.clientX;
+					var y=evt.clientY;
+					var left2=x-left1
+					var top2=y-top1
+					if(left2<0){
+						left2=0;
+					}
+					if(top2<0){
+						top2=0
+					}
+		if(left2>document.documentElement.clientWidth-obj.offsetWidth)     
+		{
+		left2=document.documentElement.clientWidth-obj.offsetWidth
+					}
+		if(top2>document.documentElement.clientHeight - obj.offsetHeight){
+						top2 = document.documentElement.clientHeight - obj.offsetHeight;
+					}
+					obj.style.left=left2+"px";
+					obj.style.top=top2+"px";
+				}	
+			}
+			document.onmouseup=function(){
+					document.onmousemove=null;
+				    }
+		}	
+	</script>
+		
+		
+	</body>
+	
+</html>

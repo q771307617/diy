@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .ball{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 200px;
+            top: 200px;;
+        }
+        .target{
+            width: 100px;
+            height: 100px;
+            background: green;
+            position: absolute;
+            left: 1000px;
+            top:300px;
+        }
+
+    </style>
+
+    <script>
+
+        window.onload = function () {
+            // y = aX^2+bX+c
+//            (a1,b1) (a2,b2);
+//            a+b+c=15;
+//            a+2b+3C=16
+            var a = 0.0015;//
+
+
+            // y1 = aX1^2+bX1+c
+            //Y2 = ax2^2+bX2+c
+
+
+            //b 和 c 值
+            //假设 抛物线经过原点   c =0；
+            //算出b
+            //b = (y-aX^2)/x
+
+            var target = document.getElementsByClassName('target')[0];
+            var ball = document.getElementsByClassName('ball')[0];
+
+            //终点坐标
+            var targetPoint = {
+                x:target.offsetLeft-ball.offsetLeft,
+                y:target.offsetTop-ball.offsetTop
+            };
+            var b = (targetPoint.y-a*targetPoint.x*targetPoint.x)/targetPoint.x;
+            console.log(b);
+
+            //y = aX^2+bX
+
+            var startPoint = {
+                x:ball.offsetLeft,
+                y:ball.offsetTop
+            }
+
+
+            var x = 0;
+           var timer =  setInterval(function () {
+                var y = a*x*x+b*x;
+
+                ball.style.left = x+ startPoint.x +'px';
+                ball.style.top = y +startPoint.y+ 'px';
+
+                x = x +10;
+                if(x == targetPoint.x){
+                    clearInterval(timer)
+                }
+
+            },10)
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+    </script>
+    <script src="../day16/animateBak.js"></script>
+</head>
+<body>
+
+<div class="ball">
+</div>
+
+<div class="target"></div>
+
+</body>
+</html>

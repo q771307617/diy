@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="cookie.js"></script>
+    <script>
+        //获取cookie
+        window.onload = function () {
+
+            var productName =  getCookie('product');
+            console.log(productName)
+            var proLink = getCookie('productLink');
+
+
+
+           var newLi = document.createElement('li');
+            var newA = document.createElement('a');
+            newA.innerHTML = productName;
+            newA.href = proLink;
+            newLi.appendChild(newA);
+
+
+            var ul = document.getElementsByTagName('ul')[0];
+            ul.appendChild(newLi)
+
+        }
+
+
+    </script>
+</head>
+<body>
+
+<ul>
+
+</ul>
+
+
+</body>
+</html>

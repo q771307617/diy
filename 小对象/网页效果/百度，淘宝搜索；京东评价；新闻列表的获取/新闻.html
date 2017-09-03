@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="ajaxbak.js"></script>
+		<script>
+			window.onload = function(){
+				var lastOrder = 0;
+				
+				ajax({
+					url:'https://api.readhub.me/topic?lastCursor=6500&pageSize=10',
+					success:function(res){
+						var jsonObj = JSON.parse(res);
+						console.log(jsonObj)
+                    lastOrder = jsonObj.data[jsonObj.data.length-1].order;
+						
+						var content = document.getElementsByClassName('content')[0];
+						var html ='';
+						for(var i=0;i<jsonObj.data.length;i++){
+							var news = jsonObj.data[i];
+							html = html+'<li data-id="'+news.id+'">'+news.title+'</li>'
+						}
+						content.innerHTML = content.innerHTML+html;
+					}
+				})
+				
+				
+				//点击事件
+				var btn = document.getElementsByClassName('btn')[0];
+				btn.onclick = function(){
+					var url = 'https://api.readhub.me/topic?lastCursor='+lastOrder+'&pageSize=10'
+					ajax({
+						url:url,
+						success:function(res){
+							var jsonObj = JSON.parse(res);
+							lastOrder = jsonObj.data[jsonObj.data.length-1].order;
+							console.log(jsonObj);
+							var content = document.getElementsByClassName('content')[0];
+							var html = '';
+							for(var i=0;i<jsonObj.data.length;i++){
+								var news = jsonObj.data[i];
+								html+='<li data-id="'+news.id+'">'+news.title+'</li>'
+							}
+							content.innerHTML=content.innerHTML+html;
+						}
+					})
+				}
+				
+				//监听页面的滚动事件
+				
+				var isRequest = false;
+				window.onscroll = function(event){
+					var e= event || window.event;
+					// 文档的高度 == 页面隐藏的高度（scrollTOP）+窗口的高度
+			
+			var scrollTop = document.body.scrollTop||document.documentElement.scrollTop;
+			console.log(scrollTop)
+			//窗口的高度
+			console.log(window.innerHeight,'windiw.innerHeight')
+	//html	
+console.log(document.documentElement.clientHeight,'documentElement.clientHeight')
+//body
+console.log(document.body.clientHeight,'body.clientHeight')
+
+	if(isRequest == true){
+		return;
+	}
+	
+	if(document.body.clientHeight-window.innerHeight-200<= scrollTop){
+		console.log('滚动到底部了')
+		
+		isRequest = true;
+		
+		var url = 'https://api.readhub.me/topic?lastCursor='+lastOrder+'&pageSize=20'
+		ajax({
+			url:url,
+			success:function(res){
+				var jsonObj = JSON.parse(res);
+				lastOrder = jsonObj.data[jsonObj.data.length-1].order;
+				console.log(jsonObj);
+				var content = document.getElementsByClassName('content')[0];
+				var html = '';
+				for(var i=0;i<jsonObj.data.length;i++){
+					var news = jsonObj.data[i];
+					html = html +'<li data-id="'+news.id+'">'+news.title+'</li>'
+				}
+				
+				content.innerHTML = content.innerHTML+html;
+				
+				isRequest = false;
+		}	
+		});
+	}
+		}	
+		}	
+	</script>	
+	</head>
+	<body>
+		<ul class="content"></ul>
+    
+
+		<button class="btn">加载更多</button>
+	</body>
+</html>

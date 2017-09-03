@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			#content{width:600px;min-height:800px;height:auto!important; border:1px solid #000;margin:0 auto;}
+		#textarea{width:400px;height:100px;margin:20px;}
+		#btn{margin:30px;}
+		#box{width:500px;min-height:800px;height:auto!important;;border:1px solid #000;margin:0 auto;}
+		</style>
+	</head>
+	<body>
+		
+		
+		<div id="content">
+			<textarea id="textarea"></textarea>
+			<input type="button" id="btn" value="发送" />
+			
+			<ul id="box">
+				<dl id="liuyan">
+					<dt>第一次留言</dt>
+					<dd class="liuyan_con">好紧张</dd>
+					<p><span id="time"></span></p>
+				</dl>
+			</ul>
+		</div>
+		
+		
+		<script type="text/javascript">
+			var otext=document.getElementById("textarea");
+			var obox=document.getElementById("box");
+			var obtn=document.getElementById("btn");
+			var time=document.getElementById("time");
+			
+			var timer = setInterval(js,1000);
+			function js(){
+				var oDate = new Date();
+				var hh = oDate.getHours();
+				var mm = oDate.getMinutes();
+				var ss = oDate.getSeconds();
+				time.innerHTML =format(hh)+":"+format(mm)+":"+format(ss);
+			}
+			function format(s){
+				s=s<10?"0"+s:s
+			}
+			obtn.onclick = function(){
+				var otextstr = otext.value;			
+				var odl = document.getElementsByClassName("liuyan");
+				if(otext.value){
+					var oodl = document.createElement("dl");
+					var html = "";
+					html="<dt></dt><dd calss='liuyan_con'><p><span id='time'></span>："+otextstr+"</p></dd>";
+					oodl.innerHTML =html;
+					oodl.className = "liuyan";
+					box.insertBefore(oodl,odl[0]);
+					otext.value = "";
+				}else{
+					return false;
+				}
+				
+				
+				var odd = document.createElement("p");
+					odd.innerHTML = "<a class='delete'>删除</a>";
+					odl.appendChild(odd);
+					obox.appendChild(odl);
+					var obtn = document.getElementsByClassName("delete");
+					for(var i=0;i<obtn.length;i++){
+						obtn[i].onclick = function(){
+							obox.removeChild(this.parentNode.parentNode);
+						}					
+					}
+			}
+			
+			
+		</script>
+	</body>
+</html>

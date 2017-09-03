@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+  <title>jQuery�����˵����Tendina - վ���ز�</title>
+
+  <link rel="stylesheet" href="css/demo.css">
+</head>
+  <body>
+    <ul class="cmcc">
+    	<li><a href="#">111</a></li>
+      <li>
+        <a href="#">Menu 1</a>
+        <ul>
+          <li><a href="#">Submenu 1</a></li>
+          <li><a href="#">Submenu 2</a></li>
+          <li><a href="#">Submenu 3</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Menu 2</a>
+        <ul>
+          <li><a href="#">Submenu 2</a></li>
+          <li><a href="#">Submenu 2</a></li>
+          <li><a href="#">Submenu w/ childrens</a>
+            <ul>
+              <li>Subsubmenu 2</li>
+              <li>Subsubmenu 2</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Menu 3</a>
+        <ul>
+          <li><a href="#">Submenu 3</a></li>
+          <li><a href="#">Submenu 3</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/tendina.js"></script>
+    <script>
+      $('.cmcc').tendina({
+        animate: true,
+        speed: 500,
+        openCallback: function($clickedEl) {
+          console.log($clickedEl);
+        },
+        closeCallback: function($clickedEl) {
+          console.log($clickedEl);
+        }
+      })
+    </script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>�����������IE8��360��FireFox��Chrome��Safari��Opera�����Ρ��ѹ�������֮��.</p>
+<p>��Դ��<a href="http://sc.chinaz.com/" target="_blank">վ���ز�</a></p>
+</div>
+
+</body>
+</html>

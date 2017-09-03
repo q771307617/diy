@@ -1,0 +1,6 @@
+var zuobi = $("#topic").find('tr');
+	for(var i=0;i<zuobi.leng-2;i++){
+		$("#topic").find('tr').eq(i)find('td').last().find('label').first().find('input').attr('checked','checked')
+	}
+	$("#topic").find('tr').eq(13).first().find('td').last().find('textarea').html('66666666666');
+	$("#topic").find('tr').eq(14).first().find('td').last().find('textarea').html('66666666666');

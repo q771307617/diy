@@ -1,0 +1,149 @@
+
+<li>手机号码：^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$</li>
+
+1.验证密码
+在第1个文本框中输入1个数，第2个文本框中再输入1个数，再点击“验证”按钮，验证两次输入是否一致，验证密码的长度必须大于6位
+
+<html>
+<head>
+<title></title>
+<script language="javascript">
+function add(){
+var s1=document.forms.haha.a1.value;
+var s2=document.forms.haha.a2.value;
+if(s1.length<6){
+alert("密码不能少于6位"); } else{ if(s1!=s2){ alert("你两次输入的密码不一致！请重新输入!");
+document.forms.haha.a1.focus();
+}
+else{
+alert("密码正确！请进!");
+}
+} }
+</script>
+</head>
+<body>
+<form name="haha">
+<input type="text" name="a1" value="11" ><br>
+<input type="text" name="a2"><br>
+<input type="button" value="验证" onclick="add()">
+</form>
+</body>
+</html>
+
+2.验证用户名是否为空
+
+当用户名文本框失去焦点时，验证用户名是否为空，如果为空则弹出一个警告框，且光标还是定位在用户名那个文本框上(用户名文本框还是获得焦点)
+
+
+</html>
+<html>
+<head>
+<title></title>
+<script type="text/javascript">
+function ye(name){
+var pname=name.value;
+if(pname.length==0){
+alert("请输入姓名");
+name.focus();
+}
+}
+</script>
+</head>
+<body>
+<form >
+姓名：<input type="text" name="name" onblur="ye(this)"><br>
+密码:<input type="password" name="password">
+</form>
+</body>
+</html>
+
+3.动态添加表格行
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> <HTML>
+<HEAD>
+<TITLE> New Document </TITLE>
+<script>
+function add(){
+var td=document.getElementById("mytab");
+var br=document.createElement("br"); var file=document.createElement("input"); file.type="file"; var del=document.createElement("input"); del.type="button"; del.value="删除"; del.onclick=function(){ td.removeChild(br); td.removeChild(file); } td.removeChild(del); td.appendChild(br); td.appendChild(file);
+td.appendChild(del);
+}
+</script>
+</HEAD>
+<BODY>
+<table border="1">
+<tr> <td>文件上传</td>
+
+<td id="mytab"> <input type="file"> <input type="button" value="添加" onclick="add()"> </td> </tr>
+</table>
+</BODY>
+</HTML>
+
+
+4.var str = ‘abc;ee;gg;rrt;hh’
+其中有多少个‘a’
+调用字符串中的方法，解析出”abc ee gg rrt hh ”的四个字符串
+
+ 
+<html>
+<head>
+<title>解析字符串.html</title>
+<script language="javascript">
+var s='abc;ee;gg;rrt;hh';
+var str=s.split(";");
+var count=0;
+var i;
+for(m in str){
+document.write(str[m]+"<br>");
+}
+for(i=0;i<=s.length;i++)
+{
+var g=s.toString().charAt(i);
+if(g=="a")
+count++;
+}
+document.write("有"+count+"个a");
+</script>
+</head>
+<body>
+</body>
+</html>
+
+
+5.设一个定时器，10秒后自动打开一个大小400*300的窗口
+
+
+
+<html>
+
+<head>
+<title></title>
+<script type="text/javascript">
+function xixi(){
+s=window.open("子窗口.html");
+</script>
+</head>
+<body onload="setTimeout('xixi()',5000)">
+</body>
+</html>
+
+
+6在文本框中显示当前时间，可以停止，也可以继续
+
+
+
+<html>
+<head>
+<title>时钟.html</title>
+<script type="text/javascript">
+var t=0;
+function xixi(){ var time=new Date(); var h=""+time.getHours(); var m=""+time.getMinutes(); var s=""+time.getSeconds(); if(h.length==1){ h="0"+h; } if(m.length==1){ m="0"+m; } if(s.length==1){ s="0"+s; } var str=h+":"+m+":"+s; document.forms.form1.haha.value=str; } function hehe(){ clearInterval(t); }
+</script>
+</head>
+<body onload="t=setInterval('xixi()',1000)">
+<form name="form1">
+<input name="haha" >
+<input type="button" value="停" onclick="hehe()">
+<input type="button" value="继续 "onclick="t=setInterval('xixi()',1000)"> </form>
+</body>
+</html>

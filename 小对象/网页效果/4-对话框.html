@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{height:600px;width:500px;border:1px solid 				#ADFF2F;margin:auto;}
+							
+			ul{position:relative;height:500px;width:400px;list-st   yle: none;border:1px solid #ADFF2F;margin:auto;overflow-y: scroll;}				
+			.left{width:100%;height:100px;text-align:left;}
+			.right{width:100%;height:100px;text-align:right;}				
+			.ipt1{float: left;}
+			b{float: right;}
+				
+		</style>
+	</head>
+	<script>
+		window.onload = function(){
+			var div = document.getElementsByTagName('div')[0]
+			var ul = document.getElementsByTagName('ul')[0]		
+			var ipt1 = document.getElementsByClassName('ipt1')[0]
+			var b = document.getElementsByTagName('b')[0]
+			
+			b.onclick = function(){
+				var li = document.createElement('li');
+				li.innerHTML = ipt1.value;
+				li.className = 'right';
+				ul.appendChild(li);
+				
+			
+			li.scrollIntoView();       //	将元素滚动到下方
+			}
+		}
+	</script>
+	<body>
+		<div>
+			
+			<ul>
+				<li class="left">hi</li>
+				<li class="right">你好</li>
+				<li class="left">吃饭了吗</li>
+				<li class="right">还没呢</li>
+				
+			</ul>
+			
+			<input class="ipt1"/>
+			<b>发送</b>
+		</div>
+	</body>
+</html>

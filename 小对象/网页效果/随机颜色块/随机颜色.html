@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //随机颜色
+//        var bgcolor = "#"+ Math.ceil(Math.random()*0xAAAAAA).toString(16);
+//        //        0xFFFFFF
+////        _spark.style.background = bgcolor;
+//
+//        console.log(bgcolor)
+
+
+
+
+
+    </script>
+</head>
+<body>
+<div STYLE="height: 100px;width: 100px;border:1px solid yellow"></div>
+<script>
+
+//        var a=   '#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).slice(-6);
+
+    var div = document.getElementsByTagName('div') [0]
+
+    var timer = setInterval(function(){
+        var a= '#'+('000000'+parseInt(Math.random()*0x10000000).toString(16)).slice(-6);
+//        var a = "#"+ Math.ceil(Math.random()*0xAAAAAA).toString(16);
+        console.log(a);
+        div.style.background=a;
+    },100)
+
+
+</script>
+
+</body>
+</html>

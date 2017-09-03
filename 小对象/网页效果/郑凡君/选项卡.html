@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin:0;padding:0;}
+			.div1{height:126px;width:600px;border:1px solid #000000;margin:100px auto;text-align:center;position:relative;}
+			ul{height:30px;display:flex;}
+			ul>li{flex:1;background:#AAAAAA}
+			li{list-style: none;}
+			.li1{background:#fff;border-top:3px solid #0000FF ;}
+			li>div{display:none;}
+			.div2{position:absolute;top:30px;left:0;display:flex;}
+			.div2 img{flex: 1;}
+			.div3{flex:1.5;}
+			p{flex:1;}
+			.div4{flex:2;display: flex;}
+			
+		</style>	
+		<script src="jquery-1.11.3.min.js"></script>
+		<script>
+			$(function(){
+				$('ul li').on('click',function (evt) {
+				$('ul li').removeClass('li1').eq($(this).index()).addClass('li1')				
+				$('li>div').removeClass('div2').eq($(this).index()).addClass('div2') })
+			})	
+				   
+			
+		</script>
+	</head>
+	<body>
+		<div class="div1">
+			<ul>
+				<li class="li1">家用电器
+					<div class="div2">
+						<image src="images/1.jpg"></image>
+						<div class="div3">
+							<p>京东家电·年度好货盘点</p>
+							<div class="div4">
+								<span>买电视立省1800元</span>
+								<span>空调年度大盘点</span>
+								<span>小家电普及风暴</span>
+								<span>家电奢品廊</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>手机通讯
+					<div >
+						<image src="images/2.jpg"></image>
+						<div class="div3">
+							<p>京东家电·年度好货盘点</p>
+							<div class="div4">
+								<span>买电视立省1800元</span>
+								<span>空调年度大盘点</span>
+								<span>小家电普及风暴</span>
+								<span>家电奢品廊</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>电脑数码
+					<div >
+						<image src="images/3.jpg"></image>
+						<div class="div3">
+							<p>京东家电·年度好货盘点</p>
+							<div class="div4">
+								<span>买电视立省1800元</span>
+								<span>空调年度大盘点</span>
+								<span>小家电普及风暴</span>
+								<span>家电奢品廊</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>家居服饰
+					<div >
+						<image src="images/4.jpg"></image>
+						<div class="div3">
+							<p>京东家电·年度好货盘点</p>
+							<div class="div4">
+								<span>买电视立省1800元</span>
+								<span>空调年度大盘点</span>
+								<span>小家电普及风暴</span>
+								<span>家电奢品廊</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>食品百货
+					<div >
+						<image src="images/5.jpg"></image>
+						<div class="div3">
+							<p>京东家电·年度好货盘点</p>
+							<div class="div4">
+								<span>买电视立省1800元</span>
+								<span>空调年度大盘点</span>
+								<span>小家电普及风暴</span>
+								<span>家电奢品廊</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>图书音像
+					<div >
+						<image src="images/6.jpg"></image>
+						<div class="div3">
+							<p>京东家电·年度好货盘点</p>
+							<div class="div4">
+								<span>买电视立省1800元</span>
+								<span>空调年度大盘点</span>
+								<span>小家电普及风暴</span>
+								<span>家电奢品廊</span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			
+		</div>
+	</body>
+</html>

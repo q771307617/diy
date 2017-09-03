@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="cookie.js"></script>
+    <script>
+
+        setCookie('uid',12345,365*30);
+        var uid =  getCookie('uid');
+        console.log(uid);
+
+        removeCookie('uid');
+
+        var uid =  getCookie('uid');
+        console.log(uid);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

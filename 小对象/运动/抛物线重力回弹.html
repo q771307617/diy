@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            background:red;
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            opacity: 0.3;
+            /*filter: alpha(opacity:30); 兼容问题  低版本 ie*/
+            border-radius: 50%;
+
+
+        }
+    </style>
+    <script src="../day17/common.js"></script>
+    <script>
+        var speedX = 5;
+        var speedY = -10;
+        window.onload = function () {
+
+            var box = document.getElementById('box');
+
+            var timer1 =  setInterval(function () {
+                var current = box.offsetLeft;//10
+
+                //抛物线  水平方向 匀速  竖直方向 加速
+                box.style.left = box.offsetLeft +speedX +'px';//20
+                box.style.top = box.offsetTop +speedY +'px';
+                speedY++;
+
+                current;//10      // box.offsetLeft20
+
+                //判断什么时候落地  落之后 需要改变 运动方向
+                //speedY = speedY*0.66
+                if(box.offsetTop >= document.documentElement.clientHeight-box.offsetHeight){
+                    box.style.top = document.documentElement.clientHeight-box.offsetHeight+'px';
+                    speedY *= -1;//top运动方向改变
+                    speedY = parseInt(speedY* 0.66);//能量损失
+                    console.log(speedY)
+                    if(Math.abs(speedY) <= 1 ){
+                        speedY = 0;
+                        clearInterval(timer1);
+                        clearInterval(timer2)
+                    }
+                }
+
+            },30);
+            var timer2 = setInterval(function () {
+                speedX --;
+                if(speedX <= 0){
+                    clearInterval(timer1);
+                    clearInterval(timer2)
+                }
+
+
+            },1200)
+
+        }
+
+
+    </script>
+</head>
+<body>
+<div id="box">
+
+</div>
+
+</body>
+</html>

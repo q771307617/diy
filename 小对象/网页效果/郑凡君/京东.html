@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{height:200px;width:400px;border:1px solid #000000;margin:200px auto;position:relative;text-align: center;}
+			div>img{display:none;height:100%;width:100%;}
+			.div1{position:absolute;left:0;top:80px;background:rgba(0,0,0,.7);height:40px;width:20px;z-index: 1;line-height: 40px;}
+			.div2{position:absolute;right:0;top:80px;background:rgba(0,0,0,.7);height:40px;width:20px;z-index: 1;line-height: 40px;}
+			.img{display:block}
+			p{height: 20px;width:200px;opacity:.7;background:#333333;position:absolute;bottom:20px;left:100px;display:flex;border-radius:10px;}
+			span{height:14px;width:20px;margin:3px;flex:1;background:#fff;border-radius:8px;}
+			.span{background:#7CFC00;}
+		</style>
+		<script src="jquery-1.11.3.min.js"></script>
+		<script>				
+			$(function(){								
+				var timer = null;
+				var img = $('img').length
+				var i = 0;
+				autoplay();
+				//点击右按钮事件
+				$('.div2').on('click',function(evt){
+					clearInterval(timer)
+					i++;
+					console.log(i);					
+					move();	
+					autoplay();
+				})				
+				//点击左按钮				
+				$('.div1').on('click',function(evt1){
+					clearInterval(timer)
+					i--;
+					console.log(i);
+					move();
+					autoplay();
+				})
+				//自动轮播			
+					function autoplay(){
+						timer = setInterval(function(){
+							i++;
+							move();
+						},2000)
+					} 				
+				//点击圆点事件
+				$('span').on('click',function(event){
+				clearInterval(timer);
+				i = $(this).index()	;
+				move();
+//		$('span').removeClass('span').eq($(this).index()).addClass('span');
+//		$('img').removeClass('img').eq($(this).index()).addClass('img');
+				console.log($(this).index());							
+				autoplay();							
+				})
+					//鼠标进入
+			$('#banner div').mouseenter(function(){
+					console.log(1)
+					clearInterval(timer);
+				}) 
+				//鼠标离开
+			$('#banner div').mouseleave(function(){
+					clearInterval(timer);
+					console.log(2)
+					move();
+					autoplay();	
+				}) 	
+//封装运动
+				function move(){						
+					if(i==-1){i=img-1;};
+					if(i==img){i=0;};
+					$('span').removeClass('span').eq(i).addClass('span');
+					$('.span').stop().animate({opacity:1}).siblings('span').stop().animate({opacity:1});					
+					$('img').removeClass('img').eq(i).addClass('img');
+					$('img').eq(i).stop().animate({opacity:1}).siblings('img').stop().animate({opacity:0});
+					
+				}
+			})
+		</script>
+	</head>
+	<body>
+		<div >
+			<b class="div1"><</b>
+			<b class="div2">></b>			
+			<img class="img" src="images/1.jpg"/>
+			<img src="images/2.jpg"/>
+			<img src="images/3.jpg"/>
+			<img src="images/4.jpg"/>
+			<img src="images/5.jpg"/>
+			<img src="images/6.jpg"/>			
+			<p>
+			<span class="span"></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			</p>
+		</div>
+		
+	</body>
+</html>

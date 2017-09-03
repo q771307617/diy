@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0}
+        .box{width: 100px;height: 100px;position: absolute;background: red;opacity: 1}
+
+    </style>
+    <script src="common.js"></script>
+    <script>
+        window.onload =function () {
+            var div = document.getElementsByClassName('box')[0];
+            //var op = 1;
+
+            div.timer =  setInterval(function () {
+                //op = op - 0.01;
+
+                div.style.opacity = getStyle(div).opacity - 0.01;
+
+            },30);
+
+            document.onclick = function () {
+                clearInterval(div.timer)
+            }
+
+        }
+
+    </script>
+
+</head>
+<body>
+
+<div class="box">
+
+</div>
+
+
+
+</body>
+</html>

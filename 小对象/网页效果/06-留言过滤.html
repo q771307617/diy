@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<input/>
+<button id="btn">发表</button>
+<ul>
+<li>你好</li>
+</ul>
+<script>
+//    var btn = document.getElementById('btn')
+    var btn = document.getElementsByTagName('button')[0];
+    btn.onclick = function () {
+        var ipt = document.getElementsByTagName('input')[0];
+        console.log(ipt.value);
+        var html = '<li>'+ipt.value+'</li>'
+        console.log(html)
+        //ul
+        var oUl = document.getElementsByTagName('ul')[0];
+        console.log(oUl.innerHTML)
+        oUl.innerHTML = oUl.innerHTML + html;
+
+
+    }
+
+
+</script>
+
+
+</body>
+</html>

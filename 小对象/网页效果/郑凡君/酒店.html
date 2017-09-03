@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{height:300px;width:100%;border:1px solid #000000;display:flex;}
+			img{flex:1;width:100px;height:100%;}
+			/*.img{flex:30;}*/
+		</style>
+		<script src="jquery-1.11.3.min.js"></script>
+		<script>
+			$(function(){
+				$('img').hover(function(){
+					$(this).stop().animate({
+						flexGrow:'3',
+						flexShrink:'0'
+//						flex:'(4 0 1)'
+					},400)
+//					$('img').eq($(this).index()).stop().animate({flex:5},1000)
+				},function(){
+					$(this).stop().animate({
+						flexGrow:'1',
+						flexShrink:'1'
+					},100)
+//					$('img').eq($(this).index()).stop().animate({flex:'1'},1000)
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div>
+			<img src="image/1.jpg"/>
+			<img src="image/2.jpg"/>
+			<img src="image/3.jpg"/>
+			<img src="image/4.jpg"/>
+			<img src="image/5.jpg"/>
+			<img src="image/6.jpg"/>
+			<img src="image/7.jpg"/>
+		</div>
+	</body>
+</html>

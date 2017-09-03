@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0}
+        .box{width: 200px;height: 200px;position: absolute;background: red}
+
+    </style>
+    <script>
+        window.onload =function () {
+            var div = document.getElementsByClassName('box')[0];
+            var div1 = document.getElementsByClassName('box')[1];
+
+            //y = x ;
+
+            var speed = 3;
+            var speedX = 3;
+            var speedY =1;
+
+            var isRunning = true;
+            div.timer =  setInterval(function () {
+                //speed = speed +2;
+                div.style.left  = div.offsetLeft + speedX+'px';
+                div.style.top  = div.offsetTop + speedY+'px';
+
+                //200
+                //
+                var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+                var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+                if(div.offsetLeft >= clientWidth - div.offsetWidth || div.offsetLeft <=0){
+                    console.log('到达边界')
+                    speedX = speedX*-1;
+                }
+
+                if(div.offsetTop>= clientHeight - div.offsetHeight || div.offsetTop <=0){
+                    console.log('到达边界')
+                    speedY = speedY*-1;
+                }
+
+            },50);
+
+
+
+
+
+        }
+
+    </script>
+
+</head>
+<body>
+
+<div class="box">
+
+</div>
+
+
+
+</body>
+</html>

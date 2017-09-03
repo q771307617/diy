@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div style="height:100px;width: 200px;background: red;"></div>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+<script>
+
+    window.onscroll = function(){
+        var div = document.getElementsByTagName('div')[0];
+        var arr=  document.body.scrollTop||document.documentElement.scrollTop;
+        div.style.height=(arr+110)+'px';
+
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+        <title>九宫格拖拽交换</title>
+        <style>
+            #box {
+                width: 303px;height: 303px;
+                margin : 100px auto;
+            }
+            #box div {
+                width: 100px; height: 100px;
+                float : left;
+                margin-left : 1px;
+                margin-top : 1px;
+                text-align: center;
+                line-height: 100px;
+                font-size : 50px;
+                color : #FFF;
+
+            }
+            #box div:nth-of-type(1) {background: #000;}
+            #box div:nth-of-type(2) {background: #f00;}
+            #box div:nth-of-type(3) {background: #0f0;}
+            #box div:nth-of-type(4) {background: #00f;}
+            #box div:nth-of-type(5) {background: #ff0;}
+            #box div:nth-of-type(6) {background: #f0f;}
+            #box div:nth-of-type(7) {background: #0ff;}
+            #box div:nth-of-type(8) {background: pink;}
+            #box div:nth-of-type(9) {background: orange;}
+
+            #box .draging{
+                position: absolute;
+
+            }
+        </style>
+</head>
+<body>
+    <div id="box">
+        <div >1</div>
+        <div>2</div>
+        <div >3</div>
+        <div>4</div>
+        <div >5</div>
+        <div>6</div>
+        <div >7</div>
+        <div >8</div>
+        <div >9</div>
+    </div>
+
+    <script src="js/Base.js"></script>
+    <script>
+
+        /*
+        为API而生，为框架死，为debug而奋斗一辈子，吃了符号的亏，上了大小写的当，最后死在了需求上
+
+        */
+        window.onload = function () {
+            //给盒子里面的div 都添加一个点击事件
+            //委托
+            var box = document.getElementById('box');
+            box.onmousedown = function (event) {
+                var e = event || window.event;
+                var target = e.target || e.srcElement;
+               // console.log(target)
+                //创建一个跟target一样的div ，只不过定位绝对定位
+                var cloneDiv = document.createElement('div');
+                cloneDiv.innerHTML = target.innerHTML;
+                cloneDiv.style.backgroundColor = Base.getStyle(target).backgroundColor;
+                //console.log(Base.getStyle(target))
+                cloneDiv.className = 'draging';
+
+                cloneDiv.style.top = target.offsetTop +'px';
+                cloneDiv.style.left = target.offsetLeft+'px'
+
+                box.appendChild(cloneDiv)
+
+                //clonediv 可以拖拽
+                var offsetX =  e.offsetX;
+                var offsetY = e.offsetY ;
+                console.log(target.offsetLeft)
+
+
+                document.onmousemove = function (evt) {
+                    var e2 = evt || window.event;
+                    cloneDiv.style.top = e2.clientY - offsetY +'px';
+                    cloneDiv.style.left = e2.clientX - offsetX +'px';
+                }
+
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+
+                    //需要判断 clonediv 的位置距 那个div 最近
+                    var divs = box.getElementsByTagName('div');
+                    console.log(divs.length)
+                    //判断 移动到位置距离哪一个最近
+                    var min = 10000;
+                    var minDiv = null;
+                    for(var i=0;i<divs.length-1;i++){
+                        var div = divs[i];
+                        //div cloneDiv
+                        var dis = distance(cloneDiv,div);
+                        if(dis <= min){
+                            min = dis;
+                            minDiv = div;
+                        }
+                    }
+                    //得出最小值 和距离最近的div
+                    //交换 minDiv 和 原来点击的target 的样式和内容
+                   var tmpColor = Base.getStyle(minDiv).backgroundColor;
+                    var tmpInnerHTMl = minDiv.innerHTML;
+
+                    minDiv.style.backgroundColor = Base.getStyle(target).backgroundColor;
+                    minDiv.innerHTML = target.innerHTML;
+
+                    target.innerHTML = tmpInnerHTMl;
+                    target.style.backgroundColor = tmpColor;
+
+                    //删掉克隆元素
+                    box.removeChild(cloneDiv)
+
+                    document.onmouseup = null;
+
+                }
+                return false
+
+            }
+
+
+
+        }
+
+
+        function distance(div1,div2) {
+            //勾股定理 记录 两个元素的距离
+            var a = div1.offsetLeft - div2.offsetLeft;
+            var b = div1.offsetTop - div2.offsetTop;
+            var c = Math.sqrt(a*a+b*b);
+            return c;
+        }
+
+
+    </script>
+
+</body></html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>js点击按钮文字随机点名器代码 </title>
+
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180% "Microsoft YaHei","微软雅黑", "宋体";}
+
+#bodybj{background:url(images.jpg) no-repeat center top;}
+#box{margin:auto;width:660px;font-size:36px;height:94px;line-height:40px;overflow:hidden;color:#138eee;text-align:center;padding:0 30px;margin-top:200px;}
+#bt{margin:auto;width:200px;text-align:center;margin-top:75px;color:#fff;font-size:25px;line-height:28px;cursor:pointer;}
+</style>
+
+<script type="text/javascript">
+var namelist=["找工作“骑驴找马”的观点对不对？","如何看待上班路上，在地铁（公交）上吃东西的行为","在我们的职业生涯中，如何看待吃回头草这个问题","怎么给外行人解释你所从事的工作","浅谈js是最好的脚本语言","昔日胶卷巨头将推出手机，你怎么看","工作之后的集体归属感对个人来说意味着什么",
+			"你是否看好iPhone目前的产品线","谈谈你对微信小程序的了解，哪种服务和企业适合接入微信小程序","微信小程序上线后,是否会对客户端岗位造成冲击","对于腾讯大多数业务的“抄袭”，你怎么看","你如何看待公司强制实行996","你会选择初创公司吗？",
+			"当初创公司因财务紧张，老板给你谈理想的时候，你会怎么做","如果你的世界观破灭了，你会怎么做","科班出身的IT从业者会诋毁培训班出身IT从业者，你怎么看","前段时间网曝公司女员工与老板接吻为公司文化，你怎么看","被身边同事问工资多少时，你会怎么回答",
+			"你认为架构师应该具备怎样的技能树","离开互联网，你能“存活”几天","你会喜欢你的工作吗，愿意长久的做下去吗","推荐一部你认为片中的黑科技在现实中真的实现了的电影"];
+var mytime=null;
+console.log(namelist.length);
+
+function doit(){
+	var bt=window.document.getElementById("bt");
+	if(mytime==null){
+		bt.innerHTML="停止";
+		show();                    
+	}else{
+		bt.innerHTML="开始";
+		clearTimeout(mytime);
+		mytime=null;                    
+	}
+}
+
+function show(){
+	var box=window.document.getElementById("box");
+	var num=Math.floor((Math.random()*100000))%namelist.length;
+	box.innerHTML=namelist[num];
+	mytime=setTimeout("show()",1);
+} 
+</script>
+</head>
+<body id="bodybj">
+
+<div id="box">亲，准备好点名了吗？</div>
+<div id="bt" onClick="doit()">开始</div>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+</div>
+</body>
+</html>

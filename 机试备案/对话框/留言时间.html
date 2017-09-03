@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#square{width:400px;height:200px;margin:20px auto;border:1px solid #333}
+			#txt{border:1px solid #333;margin:10px;width:250px;height:150px;}
+			#btn{width:50px;height:20px;margin:10px;}
+			
+			#box div{width:400px;min-height:100px;hieght:auto!important;
+			margin:30px auto;border:1px solid #000;}
+		</style>
+	</head>
+	<body>
+		<div id="square">
+		<textarea id="txt"></textarea>
+		<input type="button"  id="btn" value="发送" />	
+		</div>
+		<div id="box"></div>
+		<script type="text/javascript">
+			var otxt = document.getElementById("txt");
+			var obtn = document.getElementById("btn");
+			var obox = document.getElementById("box");
+			
+			
+			obtn.onclick = function(){
+				var str = otxt.value;
+				
+				var odiv = document.createElement("div");
+				obox.appendChild(odiv);
+				var p1 = document.createElement("p");
+				var p2 = document.createElement("p");
+				var p3 = document.createElement("p");
+				var ospan = document.createElement("span");
+				p1.innerHTML = str;
+				odiv.appendChild(p1);
+				
+				var odate = new Date();
+				var arr = getDate(odate,"/");
+				function getDate(odate,str){
+					var yy = odate.getFullYear();
+					var oo = odate.getMonth()+1;
+					var dd =odate.getDate();
+					var hh = odate.getHours();
+					var mm = odate.getMinutes();
+					var ss = odate.getSeconds();
+					
+					oo = oo < 10? "0"+oo:oo;					
+					dd =dd < 10?  "0"+dd:dd;
+					hh = hh < 10? "0"+hh:hh;
+					mm = mm < 10? "0"+mm:mm;
+					ss = ss < 10? "0"+ss:ss;
+					var datestr =  yy + str + mm + str + dd+"　"+ hh + ":" + oo+":"+ss;
+						return datestr;
+				}
+				
+				p2.innerHTML = arr;
+				odiv.appendChild(p2);
+				p3.innerHTML = "<span>删除</span>";
+				odiv.appendChild(p3);
+				if(obox.innerHTML ==""){
+					obox.appendChild(odiv)
+				}else{
+					var prev=obox.firstChild ||obox.firstElementChild;
+					var ochild = obox.childNodes[0];
+					obox.insertBefore(odiv,prev);
+				}
+				
+				
+				
+				otxt.value = "";
+				odiv.onclick = function(e){
+					var evt = e||event;
+					var tag = evt.target||evt.srcElement;
+					if(tag.nodeName.toUpperCase() =="SPAN"){
+						odiv.remove();
+					}
+				}
+			}
+		</script>
+		
+	</body>
+</html>

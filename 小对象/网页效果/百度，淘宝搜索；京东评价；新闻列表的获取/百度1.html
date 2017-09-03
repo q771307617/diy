@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin:0;padding:0;}
+			input{height: 30px;width:300px;}
+			ul{height:500px;width:300px;border:1px solid #000000;display:none;}
+			ul>li:hover{background:yellowgreen;}
+		</style>
+		
+		<script>
+			window.onload = function(){
+				var ipt = document.getElementsByTagName('input')[0];
+				var ul =document.getElementsByTagName('ul')[0];
+			
+				//监听输入框事件
+				ipt.addEventListener('input',function(){	
+                	console.log(this.value)	
+					var sc = document.createElement('script');
+					sc.src='https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+ipt.value+'&json=1&p=3&sid=1425_21103_22157&req=2&bs=12306&pbs=12306&csor=2&pwd=123&cb=jQuery110203601367745517432_1497776668510&_=1497776668514';
+					document.body.appendChild(sc)
+					document.body.removeChild(sc)	
+					if(ipt.value ==''){
+				ul.style.display = 'none';
+			}
+				})
+				
+				var ipt = document.getElementsByTagName('input')[0];
+			var ul =document.getElementsByTagName('ul')[0];
+			
+				ul.onclick = function(ent){
+					var e = ent || window.event;
+					var target = e.target || e.srcElement;
+					ipt.value = target.innerHTML;
+					
+					ul.style.display = 'none';
+				}
+			
+			}
+			
+			function jQuery110203601367745517432_1497776668510(data){
+				var ul =document.getElementsByTagName('ul')[0];
+				console.log(data);
+				var html ='';
+				for(var i=0;i<data.s.length;i++){
+					var tmp = data.s[i];	
+					html += '<li class="lis">'+tmp+'</li>'
+					ul.innerHTML = html;
+					ul.style.display='block';
+				
+			}
+				
+				}
+			
+			
+		</script>
+	</head>
+	<body>
+		<input >
+		<ul></ul>				
+	</body>
+</html>

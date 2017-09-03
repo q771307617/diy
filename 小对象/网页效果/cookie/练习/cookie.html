@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../cookie.js"></script>
+    <script>
+        window.onload=function(){
+            var ipt1=document.getElementsByClassName('ipt1')[0];
+            var ipt2=document.getElementsByClassName('ipt2')[0];
+            var btn=document.getElementsByTagName('button')[0];
+
+            btn.onclick=function(){
+                  setCookie("ipt1",ipt1.value,365);
+                  setCookie("ipt2",ipt2.value,20);
+
+            };
+            if(getCookie("ipt1")!=undefined){
+                ipt1.value=getCookie("ipt1");
+            }
+            if(getCookie("ipt2")!=undefined){
+                ipt2.value=getCookie("ipt2");
+            }
+
+        }
+
+
+
+    </script>
+
+
+</head>
+<body>
+<input  TYPE="TEXT" class="ipt1"/>
+<input  type="password" class="ipt2"/>
+<button>登陆</button>
+</body>
+</html>

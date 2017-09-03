@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="../common.js"></script>
+    <script src="../animateBak.js"></script>
+<script>
+    window.onload = function(){
+        var div = document.getElementsByTagName('div')[0];
+        var img = div.getElementsByTagName('img');
+        var left = div.getElementsByClassName('left')[0];
+        var right = div.getElementsByClassName('right')[0];
+        var p = div.getElementsByTagName('p')[0];
+        var b = p.getElementsByTagName('b');
+
+
+        //        进入停滞
+        var count= 0;
+        var timer =setInterval(function(){
+
+            right.onclick();
+
+        },2000);
+        div.onmouseenter=function(){
+            clearInterval(timer)
+        }
+        div.onmouseleave=function() {
+            setInterval(function () {
+                right.onclick();
+            }, 2000)
+        }
+
+
+//        按钮播放
+        var count = 0;
+
+        for(let j=0;j<b.length;j++){
+
+            b[j].onclick=function () {
+                b[count].style.background='#fff';
+                img[j].style.opacity = 1;
+                img[count].style.opacity=0;
+                count = j;
+                b[count].style.background='red'
+            }
+//            b[j].onmouseleave=function () {
+//                b[count].style.background='#fff'
+//            }
+        }
+
+
+        b[0].style.background='red';
+
+        right.onclick = function() {
+
+//            clearInterval(timer)
+//            setTimeout(function () {
+//                timer = setInterval(function () {
+//                    right.onclick();
+//                }, 2000);
+//            }, 2000)
+
+            b[count].style.background='#fff';
+            animate(img[count],{opacity:0});
+            count++;
+            if(count==5){
+                count=0;
+            }
+            animate(img[count],{opacity:1});
+
+            b[count].style.background='red';
+        }
+
+        left.onclick = function() {
+
+            b[count].style.background = '#fff';
+            animate(img[count], {opacity: 0});
+            count--;
+            if (count == -1) {
+                count = 4;
+            }
+            animate(img[count], {opacity: 1});
+
+            b[count].style.background = 'red';
+
+        }
+
+
+
+//  点击圆点
+
+
+
+
+
+
+
+//for (var i=0;i<b.length;i++){
+//    p.onmouseenter = function(){
+//
+//        if (count=5){
+//            count=0
+//        }
+//        b[count].style.background='red';
+//        img[count].style.opacity=1;
+////                 animate(img[i],{opacity:1});
+//        p.onmouseleave=function(){
+//            b[count].style.background='#fff';
+//        }
+//
+//    }
+//
+//}
+
+
+
+
+    }
+</script>
+</head>
+<body>
+<div style="height:200px;width:400px;position: relative;margin: auto">
+    <img src="../../images/6.jpg"   style="height:200px;width:400px;position: absolute;opacity: 1">
+    <img src="../../images/7.jpg"   style="height:200px;width:400px;position: absolute;opacity: 0">
+    <img src="../../images/8.jpg"   style="height:200px;width:400px;position: absolute;opacity: 0">
+    <img src="../../images/9.jpg"   style="height:200px;width:400px;position: absolute;opacity: 0">
+    <img src="../../images/10.jpg"  style="height:200px;width:400px;position: absolute;opacity: 0">
+    <button class="left" style="position: absolute;top:95px;"> <  </button>
+    <button class="right" style="position: absolute;top:95px;right:0;"> > </button>
+    <p style="height:20px;width:80px;position: absolute;
+                bottom: 10px;left: 130px;display: flex;">
+
+        <b style="flex: 1;height:15px;width:15px;background: #f1f1f1;border-radius:8px;"></b>
+        <b style="flex: 1;height:15px;width:15px;background: #f1f1f1;border-radius:8px;"></b>
+        <b style="flex: 1;height:15px;width:15px;background: #f1f1f1;border-radius:8px;"></b>
+        <b style="flex: 1;height:15px;width:15px;background: #f1f1f1;border-radius:8px;"></b>
+        <b style="flex: 1;height:15px;width:15px;background: #f1f1f1;border-radius:8px;"></b>
+    </p>
+
+
+
+
+
+
+</div>
+
+</body>
+</html>

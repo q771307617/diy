@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{heigt:auto;min-height:500px;width:300px;border:1px solid #ADFF2F;
+					margin:auto;position: relative;}
+			b{display:block;background:#ADFF2F;position:absolute;top:0;right:20px;}
+			ul{margin:10px;}
+			li{border:1px solid #adbc23;}
+		
+		
+		
+		</style>
+	</head>
+	<script>
+		window.onload = function(){
+		var input = document.getElementsByTagName('input')[0];
+		var b = document.getElementsByTagName('b')[0];
+		var ul = document.getElementsByTagName('ul')[0];
+		//var li = document.getElementsByTagName('li')[0];
+		
+		b.onclick = function(){
+
+			var li = document.createElement('li');
+			li.innerHTML=input.value;
+//			ul.appendChild(li);
+			ul.insertBefore(li,ul.childNodes[0]);
+		}
+		
+	}
+		
+	</script>
+	
+	<body>
+		<div>
+			<input type = "text" placeholder="请输入留言内容">
+			<b>留言</b>
+			<ul>
+				
+			</ul>
+		</div>
+		
+	</body>
+</html>

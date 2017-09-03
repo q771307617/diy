@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		    body,ul,li,dl,dt,dd,p,ol,h1,h2,h3,h4,h5,h6,form,table,img,fieldset,legend{margin:0;padding:0;}
+			ul,ol,li{list-style:none;}
+			img,fieldset{border:0;}
+			img{display:block;}
+			a{text-decoration:none;color:#333;}
+			h1,h2,h3,h4,h5,h6{font-weight:100;}
+			body{font-size:12px;font-family:"微软雅黑";}
+			input,a{outline:none;}
+
+			ul{height:600px;width:760px;border:1px solid red;margin:30px auto;}
+			ul li{width:100px;height:50px;float:left;background: green;border-radius:10px;margin:10px;text-align: center;line-height: 50px;font-size: 24px;color:white;}
+			input{height:40px;width:100px;margin:10px auto;display: block;background:pink;}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="开始"/>
+		<input type="button" value="停止"/>
+		<ul>
+			<li>顾新龙</li>
+			<li>梁晓克</li>
+			<li>卢云静</li>
+			<li>王泽宇</li>
+			<li>王智勇</li>
+			<li>别永汉</li>
+			<li>陈坤</li>
+			<li>杜欣</li>
+			<li>丰团辉</li>
+			<li>高博文</li>
+			<li>耿同良</li>
+			<li>金瑶</li>
+			<li>李肖飞</li>
+			<li>梁宁宁</li>
+			<li>刘凯</li>
+			<li>刘世昌</li>
+			<li>罗静强</li>
+			<li>潘旭白</li>
+			<li>石永华</li>
+			<li>涂鹏</li>
+			<li>王安琪</li>
+			<li>王吉涛</li>
+			<li>王稳</li>
+			<li>温泉</li>
+			<li>夏松</li>
+			<li>夏文博</li>
+			<li>徐海涛</li>
+			<li>翟寒春</li>
+			<li>张少杰</li>
+			<li>张文斌</li>
+			<li>张亚军</li>
+			<li>张宇博</li>
+			<li>郑凡君</li>
+			<li>支辉朋</li>
+			<li>朱松涛</li>
+			<li>宗紫君</li>
+			<li>王以栋</li>
+			<li>程皓</li>
+			<li>吕思真</li>
+			<li>沙明江</li>
+			<li>谈梦钗</li>
+			<li>许瑞</li>
+			<li>张金彪</li>
+		</ul>
+		
+		<script type="text/javascript">
+			onload=function(){
+				var li=document.getElementsByTagName("li");
+				var ipt=document.getElementsByTagName("input")[0];
+				var ipt1=document.getElementsByTagName("input")[1];
+				var ul=document.getElementsByTagName("ul")[0];
+				ipt.onclick=function(){
+					var y=setInterval(function(){
+					ipt1.onclick=function(){
+						clearInterval(y);
+					}
+					for(var i=0;i<li.length;i++){
+						li[i].style.background="";
+					}
+					var x=parseInt(Math.random()*(li.length-1)+1); 
+					li[x].style.background="red";
+					},100)								
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

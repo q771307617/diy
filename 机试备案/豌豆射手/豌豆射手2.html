@@ -1,0 +1,86 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.peas{width:63px;height:70px;
+				position:absolute;
+				top:0;left:0;
+			}
+			.peas-copy{width:70px;height:70px;
+				position:absolute;
+				top:0;left:0;
+			}
+			
+			
+			
+			
+			
+			/*.bullet {
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background-color: green;   
+			}*/
+            .bullet{
+				position:absolute;width:30px;height:30px; border-radius:50%;
+				background-color:red;
+					}
+		</style>
+	</head>
+	<body>
+		
+	<img  class ="peas" src = "img/peas.gif"/>
+	<script type="text/javascript">
+		window.onload = function(){
+			var peas = document.querySelector('.peas');
+//            querySelector
+			peas.onmousedown = function(e){
+					e = e || window.event;
+				e.preventDefault ?e.preventDefault():returnValue = false;
+					var img = document.createElement("img");
+					img.className = "peas-copy";
+					img.src="img/peas.gif";
+					document.body.appendChild(img);		
+				document.onmousemove = function(e){
+					
+					img.style.left = e.clientX - 31 + 'px';
+						img.style.top = e.clientY - 35 + 'px';
+								
+				}
+				document.onmouseup = function(e){
+					e= e||window.event;
+					document.onmousemove = null;
+					//子弹
+					setInterval(function(){
+						var span = document.createElement("span");
+						span.className="bullet";
+						
+						span.style.left = e.clientX+30+"px";
+						span.style.top = e.clientY - 35+"px";
+						document.body.appendChild(span);
+						
+						
+						var l = e.clientX+30;
+						var timer = setInterval(function(){
+							l+=2;
+							if(l>=1000){
+								clearInterval(timer);
+								
+								span.remove();
+							}
+							span.style.left = l+"px";
+						},10)
+					},2000)
+				}
+				
+			}
+		}
+	</script>
+	</body>
+</html>
+	
+
+					

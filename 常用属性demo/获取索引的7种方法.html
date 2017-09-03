@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--前三种的-->
+		<!--<ul id="list">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>-->
+		
+		<!--第四种-->
+		<!--<ul class="list">
+			<li data-index="0">1</li>
+			<li data-index="1">2</li>
+			<li data-index="2">3</li>
+			<li data-index="3">4</li>
+			<li data-index="4">5</li>
+		</ul>-->
+		
+		<!--第五种-->
+		<!--<ul class="list">
+			<li index="0">1</li>
+			<li index="1">2</li>
+			<li index="2">3</li>
+			<li index="3">4</li>
+			<li index="4">5</li>
+		</ul>-->
+		
+		
+			
+		<ul class="list">
+			<li class="0">1</li>
+			<li class="1">2</li>
+			<li class="2">3</li>
+			<li class="3">4</li>
+			<li class="4">5</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		//第一种
+//		var ul = document.getElementById("list");
+//		var li = document.getElementsByTagName("li");
+//		for(let i = 0; i < li.length;i++){
+//			li[i].onclick = function(){
+//				console.log(i)
+//			}
+//		}
+
+
+
+		//第二种
+//		var ul = document.getElementById("list");
+//		var li = document.getElementsByTagName("li");
+//		for(var i = 0;i < li.length;i++){
+//			(function(i){
+//				li[i].onclick = function(){
+//					console.log(i);
+//				}
+//			})(i)
+//		}
+
+
+		//第三种
+//		var nodeList = document.getElementsByTagName('li') ,
+//			arrNodes = Array.prototype.slice.call(nodeList) ,
+//      	nodeUls = document.getElementsByTagName('ul') ;
+//  	nodeUls[0].addEventListener("click",function(event){
+//      	var event = event || window.event;
+//      	var target = event.target || event.srcElement;
+//      		console.log(arrNodes.indexOf(target))
+// 	 	},false);
+
+
+
+		//第四种 五种。
+//		var ul = document.getElementById("list");
+//		var li = document.getElementsByTagName("li");
+//		
+//		for(var i = 0;i < li.length;i++){
+//			li[i].setAttribute("data-index",i)
+//			li[i].onclick = function(e){
+//				console.log(e.target.dataset.index);
+//				console.log(e.target.getAttribute("data-index"))
+//			}
+//		}
+
+		//第六种
+//		var ul = document.getElementById("list");
+//		var li = document.getElementsByTagName("li");
+//		for(var i = 0;i < li.length;i++){
+//			li[i].index = i;
+//			li[i].onclick = function(e){
+//				console.log(this.index);
+//			}
+//		}
+		
+		//第七种
+//		var ul = document.getElementById("list");
+//		var li = document.getElementsByTagName("li");
+//		for(var i = 0;i < li.length;i++){
+//			let index = i;
+//			li[i].onclick = function(e){
+//				console.log(index);
+//			}
+//		}
+
+		
+
+	</script>
+</html>
